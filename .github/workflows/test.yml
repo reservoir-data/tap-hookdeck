@@ -30,10 +30,14 @@ jobs:
       NOXPYTHON: ${{ matrix.python-version }}
       NOXSESSION: tests
       PIP_CONSTRAINT: .github/workflows/constraints.txt
-      SETUPTOOLS_USE_DISTUTILS: stdlib
     strategy:
+      fail-fast: false
       matrix:
+        script: ["test:integration"]
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+        include:
+        - { script: "test:dependencies", python-version: "3.11" }
+        - { script: "typing:check",      python-version: "3.11" }
 
     steps:
     - name: Checkout code
@@ -43,27 +47,21 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
+        cache: pip
 
     - name: Upgrade pip
       run: |
         pip install pip
         pip --version
 
-    - name: Install Poetry
+    - name: Install Hatch
       run: |
-        pipx install poetry
-        poetry --version
-        poetry self show plugins
+        pipx install hatch --python "python${{ matrix.python-version }}"
+        hatch --version
 
-    - name: Install Nox
-      run: |
-        pipx install nox
-        pipx inject nox nox-poetry
-        nox --version
-
-    - name: Run tests
+    - name: Run
       env:
         TAP_HOOKDECK_API_KEY: ${{ secrets.TAP_HOOKDECK_API_KEY }}
         TAP_HOOKDECK_START_DATE: ${{ secrets.TAP_HOOKDECK_START_DATE }}
       run: |
-        nox
+        hatch run ${{ matrix.script }}
