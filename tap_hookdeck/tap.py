@@ -43,11 +43,11 @@ class TapHookdeck(Tap):
             # https://github.com/edgarrmondragon/tap-hookdeck/issues/1
             streams.Requests(tap=self),
             # TODO(edgarrmondragon): events
-            # https://github.com/edgarrmondragon/tap-hookdeck/issues/2
-            # TODO(edgarrmondragon): attempts
             # https://github.com/edgarrmondragon/tap-hookdeck/issues/3
-            # TODO(edgarrmondragon): bookmarks
+            # TODO(edgarrmondragon): attempts
             # https://github.com/edgarrmondragon/tap-hookdeck/issues/4
-            # TODO(edgarrmondragon): issues
+            # TODO(edgarrmondragon): bookmarks
             # https://github.com/edgarrmondragon/tap-hookdeck/issues/5
+            # TODO(edgarrmondragon): issues
+            # https://github.com/edgarrmondragon/tap-hookdeck/issues/6
         ]

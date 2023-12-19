@@ -108,6 +108,7 @@ convention = "google"
 [tool.deptry.package_module_name_map]
 mypy = "mypy"
 pytest = "pytest"
+tap-hookdeck = "tap_hookdeck"
 types-requests = "requests"
 
 [tool.deptry.per_rule_ignores]
