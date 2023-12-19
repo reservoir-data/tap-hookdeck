@@ -1,0 +1,34 @@
+version: 1
+send_anonymous_usage_stats: false
+project_id: tap-hookdeck
+default_environment: dev
+environments:
+- name: dev
+plugins:
+  extractors:
+  - name: tap-hookdeck
+    label: Hookdeck
+    namespace: hookdeck
+    description: Receive, process, and deliver messages across your event-driven architecture
+    repository: https://github.com/edgarrmondragon/tap-hookdeck
+    docs: https://github.com/edgarrmondragon/tap-hookdeck#readme
+    pip_url: -e .
+    capabilities:
+    - state
+    - catalog
+    - discover
+    settings:
+    - name: api_key
+      kind: password
+      label: API Key
+      description: API Key for Hookdeck
+    - name: start_date
+      kind: date_iso8601
+      label: Start Date
+      description: Earliest datetime to get data from
+    config:
+      start_date: "2023-12-19"
+  loaders:
+  - name: target-jsonl
+    variant: andyh1203
+    pip_url: target-jsonl
