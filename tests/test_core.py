@@ -20,6 +20,7 @@ TestTapHookdeck = get_tap_test_class(
             "destinations",
             "sources",
             "transformations",
+            "requests",
         ],
     ),
 )
