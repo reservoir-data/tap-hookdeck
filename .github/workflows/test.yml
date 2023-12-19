@@ -6,8 +6,6 @@ on:
     paths:
       - tap_hookdeck/**
       - tests/**
-      - noxfile.py
-      - poetry.lock
       - pyproject.toml
       - .github/workflows/test.yml
       - .github/workflows/constraints.txt
@@ -16,8 +14,6 @@ on:
     paths:
       - tap_hookdeck/**
       - tests/**
-      - noxfile.py
-      - poetry.lock
       - pyproject.toml
       - .github/workflows/test.yml
       - .github/workflows/constraints.txt
