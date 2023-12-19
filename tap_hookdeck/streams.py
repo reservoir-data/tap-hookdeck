@@ -23,7 +23,7 @@ DESTINATION: list[th.Property[Any]] = [
     ),
     th.Property(
         "http_method",
-        th.StringType(allowed_values=["GET", "POST", "PUT", "PATCH", "DELETE"]),
+        th.StringType(allowed_values=[None, "GET", "POST", "PUT", "PATCH", "DELETE"]),
     ),
     th.Property("auth_method", th.ObjectType()),
     th.Property("archived_at", th.DateTimeType),
@@ -40,7 +40,7 @@ SOURCE: list[th.Property[Any]] = [
     th.Property("verification", th.ObjectType()),
     th.Property(
         "allowed_http_methods",
-        th.ArrayType(th.StringType(allowed_values=["GET", "POST", "PUT", "PATCH", "DELETE"])),
+        th.ArrayType(th.StringType(allowed_values=[None, "GET", "POST", "PUT", "PATCH", "DELETE"])),
     ),
     th.Property(
         "custom_response",
@@ -225,6 +225,7 @@ class Requests(HookdeckStream):
             "rejection_cause",
             th.StringType(
                 allowed_values=[
+                    None,
                     "SOURCE_ARCHIVED",
                     "NO_WEBHOOK",
                     "VERIFICATION_FAILED",
