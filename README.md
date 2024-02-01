@@ -68,7 +68,7 @@ Run integration tests:
 hatch run tests:integration
 ```
 
-You can also test the `tap-neon` CLI interface directly:
+You can also test the `tap-hookdeck` CLI interface directly:
 
 ```bash
 hatch run sync:console -- --about --format=json
@@ -90,13 +90,13 @@ Your project comes with a custom `meltano.yml` project file already created. Go 
 2. Check that the extractor is working properly
 
    ```bash
-   meltano invoke tap-neon --version
+   meltano invoke tap-hookdeck --version
    ```
 
 3. Execute an ELT pipeline
 
    ```bash
-   meltano run tap-neon target-jsonl
+   meltano run tap-hookdeck target-jsonl
    ```
 
 ### SDK Dev Guide

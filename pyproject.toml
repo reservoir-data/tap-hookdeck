@@ -14,7 +14,7 @@ keywords = [
   "Hookdeck",
   "singer.io",
 ]
-license = "Apache-2.0"
+license.file = "LICENSE"
 maintainers = [{ name = "Edgar Ramírez-Mondragón",  email = "edgarrmondragon@hey.com" }]
 authors = [{ name = "Edgar Ramírez-Mondragón",  email = "edgarrmondragon@hey.com" }]
 requires-python = ">=3.8"
@@ -32,24 +32,21 @@ dynamic = [
 dependencies = [
   "singer-sdk~=0.34.0",
 ]
-[project.optional-dependencies]
-dev = [
+optional-dependencies.dev = [
   "tap-hookdeck[testing,typing]",
 ]
-testing = [
+optional-dependencies.testing = [
   "deptry>=0.12",
   "pytest>=7.4",
   "singer-sdk[testing]~=0.34.0",
 ]
-typing = [
+optional-dependencies.typing = [
   "mypy",
 ]
-[project.urls]
-Documentation = "https://github.com/edgarrmondragon/tap-hookdeck#readme"
-Homepage = "https://github.com/edgarrmondragon/tap-hookdeck"
-Repository = "https://github.com/edgarrmondragon/tap-hookdeck"
-[project.scripts]
-"tap-hookdeck" = "tap_hookdeck.tap:TapHookdeck.cli"
+urls.Documentation = "https://github.com/edgarrmondragon/tap-hookdeck#readme"
+urls.Homepage = "https://github.com/edgarrmondragon/tap-hookdeck"
+urls.Repository = "https://github.com/edgarrmondragon/tap-hookdeck"
+scripts."tap-hookdeck" = "tap_hookdeck.tap:TapHookdeck.cli"
 
 [tool.hatch.version]
 source = "vcs"
@@ -63,6 +60,11 @@ features = ["testing"]
 [tool.hatch.envs.test.scripts]
 integration = "pytest {args:tests}"
 dependencies = "deptry ."
+
+[tool.hatch.envs.all]
+template = "test"
+[[tool.hatch.envs.all.matrix]]
+python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
 
 [tool.hatch.envs.typing]
 features = ["testing", "typing"]
