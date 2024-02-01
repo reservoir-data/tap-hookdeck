@@ -49,7 +49,7 @@ jobs:
 
     - name: Install Hatch
       run: |
-        pipx install --python "${{ steps.setup-python.outputs.python-path }}" hatch
+        pipx install --python '${{ steps.setup-python.outputs.python-path }}' hatch
         hatch --version
 
     - name: Run
