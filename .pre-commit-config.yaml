@@ -16,12 +16,12 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/tox-dev/pyproject-fmt
-    rev: "1.5.3"
+    rev: "1.7.0"
     hooks:
       - id: pyproject-fmt
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: "v0.1.8"
+    rev: "v0.1.15"
     hooks:
       - id: ruff
         name: Ruff lint
@@ -29,21 +29,13 @@ repos:
       - id: ruff-format
         name: Ruff format
 
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.7.1
-    hooks:
-      - id: mypy
-        pass_filenames: true
-        additional_dependencies:
-          - types-requests
-
   - repo: https://github.com/pre-commit/pre-commit
     rev: v3.6.0
     hooks:
       - id: validate_manifest
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.27.3
+    rev: 0.27.4
     hooks:
     - id: check-dependabot
     - id: check-github-workflows

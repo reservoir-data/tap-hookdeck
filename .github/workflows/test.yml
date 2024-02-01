@@ -17,14 +17,13 @@ on:
       - pyproject.toml
       - .github/workflows/test.yml
       - .github/workflows/constraints.txt
+  workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
     env:
       FORCE_COLOR: "1"
-      NOXPYTHON: ${{ matrix.python-version }}
-      NOXSESSION: tests
       PIP_CONSTRAINT: .github/workflows/constraints.txt
     strategy:
       fail-fast: false
@@ -32,15 +31,13 @@ jobs:
         script: ["test:integration"]
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
         include:
-        - { script: "test:dependencies", python-version: "3.11" }
-        - { script: "typing:check",      python-version: "3.11" }
+        - { script: "test:dependencies", python-version: "3.12" }
+        - { script: "typing:check",      python-version: "3.12" }
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      id: setup-python
       with:
         python-version: ${{ matrix.python-version }}
         cache: pip
@@ -52,7 +49,7 @@ jobs:
 
     - name: Install Hatch
       run: |
-        pipx install hatch --python "python${{ matrix.python-version }}"
+        pipx install --python "python${{ steps.setup-python.outputs.python-path }}" hatch
         hatch --version
 
     - name: Run
