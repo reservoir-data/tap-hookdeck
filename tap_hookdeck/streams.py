@@ -25,7 +25,7 @@ DESTINATION: list[th.Property[Any]] = [
         "http_method",
         th.StringType(
             allowed_values=[
-                None,  # type: ignore[list-item]
+                None,
                 "GET",
                 "POST",
                 "PUT",
@@ -52,7 +52,7 @@ SOURCE: list[th.Property[Any]] = [
         th.ArrayType(
             th.StringType(
                 allowed_values=[
-                    None,  # type: ignore[list-item]
+                    None,
                     "GET",
                     "POST",
                     "PUT",
@@ -245,7 +245,7 @@ class Requests(HookdeckStream):
             "rejection_cause",
             th.StringType(
                 allowed_values=[
-                    None,  # type: ignore[list-item]
+                    None,
                     "SOURCE_ARCHIVED",
                     "NO_WEBHOOK",
                     "VERIFICATION_FAILED",
