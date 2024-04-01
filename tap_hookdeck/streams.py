@@ -38,6 +38,7 @@ DESTINATION: list[th.Property[Any]] = [
     th.Property("archived_at", th.DateTimeType),
     th.Property("updated_at", th.DateTimeType, required=True),
     th.Property("created_at", th.DateTimeType, required=True),
+    th.Property("disabled_at", th.DateTimeType),
 ]
 
 SOURCE: list[th.Property[Any]] = [
@@ -76,6 +77,7 @@ SOURCE: list[th.Property[Any]] = [
     th.Property("archived_at", th.DateTimeType),
     th.Property("updated_at", th.DateTimeType, required=True),
     th.Property("created_at", th.DateTimeType, required=True),
+    th.Property("disabled_at", th.DateTimeType),
 ]
 
 
