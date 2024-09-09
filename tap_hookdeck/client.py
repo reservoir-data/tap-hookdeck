@@ -8,6 +8,9 @@ from singer_sdk import RESTStream
 from singer_sdk.authenticators import APIKeyAuthenticator
 from singer_sdk.helpers._typing import TypeConformanceLevel
 
+if t.TYPE_CHECKING:
+    from singer_sdk.helpers.types import Context
+
 
 class HookdeckStream(RESTStream[str]):
     """Hookdeck stream class."""
@@ -44,7 +47,7 @@ class HookdeckStream(RESTStream[str]):
 
     def get_url_params(
         self,
-        context: dict[str, t.Any] | None,
+        context: Context | None,
         next_page_token: str | None,
     ) -> dict[str, t.Any]:
         """Get URL query parameters.
