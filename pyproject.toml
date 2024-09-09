@@ -29,6 +29,7 @@ classifiers = [
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
 ]
 dynamic = [
   "version",
@@ -55,6 +56,12 @@ scripts."tap-hookdeck" = "tap_hookdeck.tap:TapHookdeck.cli"
 [tool.hatch.version]
 source = "vcs"
 
+[tool.hatch.envs.default]
+installer = "uv"
+
+[tool.hatch.envs.default.env-vars]
+UV_PRERELEASE = "allow"
+
 [tool.hatch.envs.sync.scripts]
 console = "tap-hookdeck {args}"
 jsonl = "tap-hookdeck {args} > tap-hookdeck.jsonl"
@@ -76,6 +83,8 @@ python = [
   "3.10",
   "3.11",
   "3.12",
+  "3.13",
+  "3.14",
 ]
 
 [tool.hatch.envs.typing]
@@ -133,11 +142,14 @@ DEP002 = [
   "pytest",
 ]
 
+[tool.pyproject-fmt]
+max_supported_python = "3.13"
+
 [tool.pytest.ini_options]
 addopts = "-vvv"
 
 [tool.mypy]
-python_version = "3.11"
+python_version = "3.12"
 warn_redundant_casts = true
 warn_unused_configs = true
 warn_unused_ignores = true
