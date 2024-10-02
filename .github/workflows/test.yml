@@ -18,6 +18,9 @@ on:
       - .github/workflows/test.yml
       - .github/workflows/constraints.txt
   workflow_dispatch:
+  schedule:
+  # Run weekly on Monday at 12:00 PM UTC
+  - cron: "0 12 * * 1"
 
 jobs:
   test:
@@ -37,8 +40,8 @@ jobs:
         - "3.12"
         - "3.13"
         include:
-        - { script: "test:dependencies", python-version: "3.12" }
-        - { script: "typing:check",      python-version: "3.12" }
+        - { script: "test:dependencies", python-version: "3.x" }
+        - { script: "typing:check",      python-version: "3.x" }
 
     steps:
     - uses: actions/checkout@v4
@@ -47,16 +50,16 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
         allow-prereleases: true
-        cache: pip
     - uses: astral-sh/setup-uv@v2
 
     - name: Install Hatch
       run: |
-        uv tool install --python '${{ steps.setup-python.outputs.python-path }}' hatch
+        uv tool install hatch
         hatch --version
 
     - name: Run
       env:
+        HATCH_PYTHON: ${{ steps.setup-python.outputs.python-path }}
         TAP_HOOKDECK_API_KEY: ${{ secrets.TAP_HOOKDECK_API_KEY }}
         TAP_HOOKDECK_START_DATE: ${{ secrets.TAP_HOOKDECK_START_DATE }}
       run: |
