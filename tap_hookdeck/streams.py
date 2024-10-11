@@ -89,7 +89,7 @@ class Connections(HookdeckStream):
     """Connections stream."""
 
     name = "connections"
-    path = "/2023-07-01/connections"
+    path = "/2024-09-01/connections"
     primary_keys: t.ClassVar[list[str]] = ["id"]
 
     # Incremental not supported
@@ -139,7 +139,7 @@ class Destinations(HookdeckStream):
     """Destinations stream."""
 
     name = "destinations"
-    path = "/2023-07-01/destinations"
+    path = "/2024-09-01/destinations"
     primary_keys: t.ClassVar[list[str]] = ["id"]
 
     # Incremental not supported
@@ -155,7 +155,7 @@ class Sources(HookdeckStream):
     """Sources stream."""
 
     name = "sources"
-    path = "/2023-07-01/sources"
+    path = "/2024-09-01/sources"
     primary_keys: t.ClassVar[list[str]] = ["id"]
 
     # Incremental not supported
@@ -171,7 +171,7 @@ class IssueTriggers(HookdeckStream):
     """Issue triggers stream."""
 
     name = "issue_triggers"
-    path = "/2023-07-01/issue-triggers"
+    path = "/2024-09-01/issue-triggers"
     primary_keys: t.ClassVar[list[str]] = ["id"]
 
     # Incremental not supported
@@ -212,7 +212,7 @@ class Transformations(HookdeckStream):
     """Transformations stream."""
 
     name = "transformations"
-    path = "/2023-07-01/transformations"
+    path = "/2024-09-01/transformations"
     primary_keys: t.ClassVar[list[str]] = ["id"]
 
     # Incremental not supported
@@ -236,7 +236,7 @@ class Requests(HookdeckStream):
     """Requests stream."""
 
     name = "requests"
-    path = "/2023-07-01/requests"
+    path = "/2024-09-01/requests"
     primary_keys: t.ClassVar[list[str]] = ["id"]
 
     # Incremental not supported
