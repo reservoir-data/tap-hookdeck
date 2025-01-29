@@ -7,7 +7,7 @@ requires = [
 
 [project]
 name = "tap-hookdeck"
-description = "`tap-hookdeck` is a Singer tap for Hookdeck, built with the Meltano SDK for Singer Taps."
+description = "Singer tap for Hookdeck, built with the Meltano SDK for Singer Taps."
 readme = "README.md"
 keywords = [
   "ELT",
@@ -36,62 +36,27 @@ dynamic = [
 dependencies = [
   "singer-sdk~=0.44.0",
 ]
-optional-dependencies.dev = [
-  "tap-hookdeck[testing,typing]",
-]
-optional-dependencies.testing = [
-  "deptry>=0.12",
-  "pytest>=7.4",
-  "singer-sdk[testing]",
-]
-optional-dependencies.typing = [
-  "mypy",
-]
 urls.Documentation = "https://github.com/edgarrmondragon/tap-hookdeck#readme"
 urls.Homepage = "https://github.com/edgarrmondragon/tap-hookdeck"
 urls.Repository = "https://github.com/edgarrmondragon/tap-hookdeck"
 scripts."tap-hookdeck" = "tap_hookdeck.tap:TapHookdeck.cli"
 
+[dependency-groups]
+dev = [
+  { include-group = "testing" },
+  { include-group = "typing" },
+]
+testing = [
+  "deptry>=0.12",
+  "pytest>=7.4",
+  "singer-sdk[testing]~=0.44.0",
+]
+typing = [
+  "mypy~=1.14.0",
+]
+
 [tool.hatch.version]
 source = "vcs"
-
-[tool.hatch.envs.default]
-installer = "uv"
-
-[tool.hatch.envs.default.env-vars]
-UV_PRERELEASE = "allow"
-
-[tool.hatch.envs.sync.scripts]
-console = "tap-hookdeck {args}"
-jsonl = "tap-hookdeck {args} > tap-hookdeck.jsonl"
-
-[tool.hatch.envs.test]
-features = [
-  "testing",
-]
-[tool.hatch.envs.test.scripts]
-integration = "pytest {args:tests}"
-dependencies = "deptry ."
-
-[tool.hatch.envs.all]
-template = "test"
-[[tool.hatch.envs.all.matrix]]
-python = [
-  "3.9",
-  "3.10",
-  "3.11",
-  "3.12",
-  "3.13",
-  "3.14",
-]
-
-[tool.hatch.envs.typing]
-features = [
-  "testing",
-  "typing",
-]
-[tool.hatch.envs.typing.scripts]
-check = "mypy --strict {args:tap_hookdeck tests}"
 
 [tool.ruff]
 line-length = 100
@@ -100,7 +65,6 @@ lint.select = [
   "ALL",
 ]
 lint.ignore = [
-  "ANN101", # missing-type-self
   "COM812", # missing-trailing-comma
   "DJ",     # flake8-django
   "FIX002", # line-contains-todo

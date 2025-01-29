@@ -7,59 +7,65 @@ on:
       - tap_hookdeck/**
       - tests/**
       - pyproject.toml
+      - tox.ini
+      - uv.lock
       - .github/workflows/test.yml
-      - .github/workflows/constraints.txt
   pull_request:
     types: [opened, synchronize, reopened]
     paths:
       - tap_hookdeck/**
       - tests/**
       - pyproject.toml
+      - tox.ini
+      - uv.lock
       - .github/workflows/test.yml
-      - .github/workflows/constraints.txt
   workflow_dispatch:
   schedule:
   # Run weekly on Monday at 12:00 PM UTC
   - cron: "0 12 * * 1"
 
+env:
+  FORCE_COLOR: "1"
+  # renovate: datasource=pypi depName=uv
+  UV_VERSION: 0.5.24
+  # renovate: datasource=pypi depName=tox
+  TOX_VERSION: 4.24.1
+  # renovate: datasource=pypi depName=tox-uv
+  TOX_UV_VERSION: 1.20.1
+
 jobs:
   test:
-    runs-on: ubuntu-latest
-    env:
-      FORCE_COLOR: "1"
-      UV_CONSTRAINT: ${{ github.workspace }}/.github/workflows/constraints.txt
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
-        script: ["test:integration"]
         python-version:
-        - "3.9"
-        - "3.10"
-        - "3.11"
-        - "3.12"
         - "3.13"
+        - "3.12"
+        - "3.11"
+        - "3.10"
+        - "3.9"
         include:
-        - { script: "test:dependencies", python-version: "3.x" }
-        - { script: "typing:check",      python-version: "3.x" }
+        - { environment: "dependencies", python-version: "3.x" }
+        - { environment: "typing",       python-version: "3.x" }
 
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-python@v5
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+    - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
       id: setup-python
       with:
         python-version: ${{ matrix.python-version }}
         allow-prereleases: true
-    - uses: astral-sh/setup-uv@v5
-
-    - name: Install Hatch
-      run: |
-        uv tool install hatch
-        hatch --version
-
-    - name: Run
+    - uses: astral-sh/setup-uv@b5f58b2abc5763ade55e4e9d0fe52cd1ff7979ca # v5.2.1
+      with:
+        version: ${{ env.UV_VERSION }}
+    - name: Run tests
       env:
-        HATCH_PYTHON: ${{ steps.setup-python.outputs.python-path }}
+        UV_PYTHON: ${{ steps.setup-python.outputs.python-path }}
         TAP_HOOKDECK_API_KEY: ${{ secrets.TAP_HOOKDECK_API_KEY }}
         TAP_HOOKDECK_START_DATE: ${{ secrets.TAP_HOOKDECK_START_DATE }}
-      run: |
-        hatch run ${{ matrix.script }}
+      run: >
+        uvx
+        --with tox-uv==${{ env.TOX_UV_VERSION }}
+        --with tox==${{ env.TOX_VERSION }}
+        tox -e ${{ matrix.environment || matrix.python-version }}
