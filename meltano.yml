@@ -10,7 +10,7 @@ plugins:
     label: Hookdeck
     namespace: hookdeck
     description: Receive, process, and deliver messages across your event-driven architecture
-    repository: https://github.com/edgarrmondragon/tap-hookdeck
+    repo: https://github.com/edgarrmondragon/tap-hookdeck
     docs: https://github.com/edgarrmondragon/tap-hookdeck#readme
     pip_url: -e .
     capabilities:
