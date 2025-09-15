@@ -51,7 +51,7 @@ testing = [
   "singer-sdk[testing]~=0.48.0",
 ]
 typing = [
-  "mypy~=1.17.0",
+  "mypy~=1.18.1",
 ]
 
 [tool.hatch.version]
