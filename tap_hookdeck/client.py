@@ -28,11 +28,9 @@ class HookdeckStream(RESTStream[str]):
         Returns:
             The authenticator instance for this REST stream.
         """
-        api_key: str = self.config["api_key"]
-        return APIKeyAuthenticator.create_for_stream(
-            self,
+        return APIKeyAuthenticator(
             key="Authorization",
-            value=f"Bearer {api_key}",
+            value=f"Bearer {self.config['api_key']}",
             location="header",
         )
 
