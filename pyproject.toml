@@ -21,10 +21,9 @@ maintainers = [
 authors = [
   { name = "Edgar Ramírez-Mondragón", email = "edgarrmondragon@hey.com" },
 ]
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 classifiers = [
   "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: 3.14",
@@ -52,6 +51,7 @@ testing = [
 ]
 typing = [
   "mypy~=1.18.1",
+  "ty>=0.0.1a21",
 ]
 
 [tool.hatch.version]
@@ -93,7 +93,7 @@ lint.pydocstyle.convention = "google"
 [tool.deptry.package_module_name_map]
 mypy = "mypy"
 pytest = "pytest"
-tap-hookdeck = "tap_hookdeck"
+ty = "ty"
 types-requests = "requests"
 
 [tool.deptry.per_rule_ignores]
@@ -121,7 +121,6 @@ env_list = [
   "3.14",
   "3.13",
   "3.12",
-  "3.11",
 ]
 
 [tool.tox.env_run_base]
@@ -136,7 +135,10 @@ commands = [ [ "deptry", "." ] ]
 
 [tool.tox.env.typing]
 dependency_groups = [ "testing", "typing" ]
-commands = [ [ "mypy", "--strict", { replace = "posargs", default = [ "tap_hookdeck", "tests" ], extend = true } ] ]
+commands = [
+  [ "mypy", "--strict", { replace = "posargs", default = [ "tap_hookdeck", "tests" ], extend = true } ],
+  [ "ty", "check", { replace = "posargs", default = [ "tap_hookdeck", "tests" ], extend = true } ],
+]
 
 [tool.mypy]
 warn_redundant_casts = true

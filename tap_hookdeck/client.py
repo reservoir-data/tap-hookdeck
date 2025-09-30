@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-import typing as t
+from typing import TYPE_CHECKING, Any, override
 
 from singer_sdk import RESTStream
 from singer_sdk.authenticators import APIKeyAuthenticator
 from singer_sdk.helpers._typing import TypeConformanceLevel
 
-if t.TYPE_CHECKING:
+if TYPE_CHECKING:
     from singer_sdk.helpers.types import Context
 
 
@@ -21,6 +21,7 @@ class HookdeckStream(RESTStream[str]):
 
     TYPE_CONFORMANCE_LEVEL = TypeConformanceLevel.ROOT_ONLY
 
+    @override
     @property
     def authenticator(self) -> APIKeyAuthenticator:
         """Get an authenticator object.
@@ -34,20 +35,12 @@ class HookdeckStream(RESTStream[str]):
             location="header",
         )
 
-    @property
-    def http_headers(self) -> dict[str, str]:
-        """Return the http headers needed.
-
-        Returns:
-            A dictionary of HTTP headers.
-        """
-        return {"User-Agent": f"{self.tap_name}/{self._tap.plugin_version}"}
-
+    @override
     def get_url_params(
         self,
         context: Context | None,
         next_page_token: str | None,
-    ) -> dict[str, t.Any]:
+    ) -> dict[str, Any]:
         """Get URL query parameters.
 
         Args:
@@ -58,7 +51,7 @@ class HookdeckStream(RESTStream[str]):
             Mapping of URL query parameters.
         """
         # https://hookdeck.com/docs/api#paging
-        params: dict[str, t.Any] = {
+        params: dict[str, Any] = {
             "limit": 250,
         }
 

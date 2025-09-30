@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import override
+
 from singer_sdk import Stream, Tap
 from singer_sdk import typing as th
 
@@ -27,12 +29,8 @@ class TapHookdeck(Tap):
         ),
     ).to_dict()
 
+    @override
     def discover_streams(self) -> list[Stream]:
-        """Return a list of discovered streams.
-
-        Returns:
-            A list of Hookdeck streams.
-        """
         return [
             streams.Connections(tap=self),
             streams.Destinations(tap=self),
