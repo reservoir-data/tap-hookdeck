@@ -2,17 +2,17 @@
 
 from __future__ import annotations
 
-import typing as t
+from typing import TYPE_CHECKING, Any, override
 
 from singer_sdk import typing as th
 
 from tap_hookdeck.client import HookdeckStream
 
-if t.TYPE_CHECKING:
+if TYPE_CHECKING:
     from singer_sdk.helpers.types import Context
 
 
-DESTINATION: list[th.Property[t.Any]] = [
+DESTINATION: list[th.Property[Any]] = [
     th.Property("id", th.StringType, required=True),
     th.Property("name", th.StringType, required=True),
     th.Property("description", th.StringType),
@@ -45,7 +45,7 @@ DESTINATION: list[th.Property[t.Any]] = [
     th.Property("disabled_at", th.DateTimeType),
 ]
 
-SOURCE: list[th.Property[t.Any]] = [
+SOURCE: list[th.Property[Any]] = [
     th.Property("id", th.StringType, required=True),
     th.Property("name", th.StringType, required=True),
     th.Property("description", th.StringType),
@@ -90,7 +90,7 @@ class Connections(HookdeckStream):
 
     name = "connections"
     path = "/2024-09-01/connections"
-    primary_keys: t.ClassVar[list[str]] = ["id"]
+    primary_keys = ("id",)
 
     # Incremental not supported
     replication_key = None
@@ -119,16 +119,17 @@ class Connections(HookdeckStream):
         additional_properties=False,
     ).to_dict()
 
+    @override
     @property
     def is_sorted(self) -> bool:
-        """Return True if the stream is sorted."""
         return True
 
+    @override
     def get_url_params(
         self,
         context: Context | None,
         next_page_token: str | None,
-    ) -> dict[str, t.Any]:
+    ) -> dict[str, Any]:
         """Get URL query parameters."""
         params = super().get_url_params(context, next_page_token)
         params["archived"] = True
@@ -140,7 +141,7 @@ class Destinations(HookdeckStream):
 
     name = "destinations"
     path = "/2024-09-01/destinations"
-    primary_keys: t.ClassVar[list[str]] = ["id"]
+    primary_keys = ("id",)
 
     # Incremental not supported
     replication_key = None
@@ -156,7 +157,7 @@ class Sources(HookdeckStream):
 
     name = "sources"
     path = "/2024-09-01/sources"
-    primary_keys: t.ClassVar[list[str]] = ["id"]
+    primary_keys = ("id",)
 
     # Incremental not supported
     replication_key = None
@@ -172,7 +173,7 @@ class IssueTriggers(HookdeckStream):
 
     name = "issue_triggers"
     path = "/2024-09-01/issue-triggers"
-    primary_keys: t.ClassVar[list[str]] = ["id"]
+    primary_keys = ("id",)
 
     # Incremental not supported
     replication_key = None
@@ -213,7 +214,7 @@ class Transformations(HookdeckStream):
 
     name = "transformations"
     path = "/2024-09-01/transformations"
-    primary_keys: t.ClassVar[list[str]] = ["id"]
+    primary_keys = ("id",)
 
     # Incremental not supported
     replication_key = None
@@ -237,7 +238,7 @@ class Requests(HookdeckStream):
 
     name = "requests"
     path = "/2024-09-01/requests"
-    primary_keys: t.ClassVar[list[str]] = ["id"]
+    primary_keys = ("id",)
 
     # Incremental not supported
     replication_key = "ingested_at"
