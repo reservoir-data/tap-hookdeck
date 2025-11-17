@@ -1,5 +1,5 @@
 send_anonymous_usage_stats: false
-required_meltano: ">=4.0"
+requires_meltano: ">=4.0"
 project_id: tap-hookdeck
 default_environment: dev
 environments:
