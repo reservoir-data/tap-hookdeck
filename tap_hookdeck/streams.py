@@ -130,7 +130,11 @@ class Connections(HookdeckStream):
         context: Context | None,
         next_page_token: str | None,
     ) -> dict[str, Any]:
-        """Get URL query parameters."""
+        """Get URL query parameters.
+
+        Returns:
+            Query paramaters.
+        """
         params = super().get_url_params(context, next_page_token)
         params["archived"] = True
         return params
@@ -184,7 +188,7 @@ class IssueTriggers(HookdeckStream):
         th.Property("name", th.StringType),
         th.Property(
             "type",
-            th.StringType(allowed_values=["delivery", "transformation", "backpressure"]),
+            th.StringType(allowed_values=["delivery", "transformation", "backpressure", "request"]),
             required=True,
         ),
         th.Property("configs", th.ObjectType()),
