@@ -98,18 +98,21 @@
   ],
   "replication_method": "FULL_TABLE",
   "schema": {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": false,
     "properties": {
       "code": {
+        "description": "JavaScript code to be executed",
         "type": [
-          "string"
+          "string",
+          "null"
         ]
       },
       "created_at": {
+        "description": "Date the transformation was created",
         "format": "date-time",
         "type": [
-          "string"
+          "string",
+          "null"
         ]
       },
       "encrypted_env": {
@@ -120,10 +123,9 @@
       },
       "env": {
         "additionalProperties": {
-          "type": [
-            "string"
-          ]
+          "type": "string"
         },
+        "description": "Key-value environment variables to be passed to the transformation",
         "properties": {},
         "type": [
           "object",
@@ -131,9 +133,8 @@
         ]
       },
       "id": {
-        "type": [
-          "string"
-        ]
+        "description": "ID of the transformation",
+        "type": "string"
       },
       "iv": {
         "type": [
@@ -142,19 +143,25 @@
         ]
       },
       "name": {
+        "description": "A unique, human-friendly name for the transformation",
         "type": [
-          "string"
+          "string",
+          "null"
         ]
       },
       "team_id": {
+        "description": "ID of the project",
         "type": [
-          "string"
+          "string",
+          "null"
         ]
       },
       "updated_at": {
+        "description": "Date the transformation was last updated",
         "format": "date-time",
         "type": [
-          "string"
+          "string",
+          "null"
         ]
       }
     },
