@@ -51,7 +51,7 @@
     {
       "breadcrumb": [
         "properties",
-        "verification"
+        "type"
       ],
       "metadata": {
         "inclusion": "available"
@@ -60,7 +60,7 @@
     {
       "breadcrumb": [
         "properties",
-        "allowed_http_methods"
+        "authenticated"
       ],
       "metadata": {
         "inclusion": "available"
@@ -69,7 +69,7 @@
     {
       "breadcrumb": [
         "properties",
-        "custom_response"
+        "config"
       ],
       "metadata": {
         "inclusion": "available"
@@ -78,29 +78,7 @@
     {
       "breadcrumb": [
         "properties",
-        "custom_response",
-        "properties",
-        "content_type"
-      ],
-      "metadata": {
-        "inclusion": "available"
-      }
-    },
-    {
-      "breadcrumb": [
-        "properties",
-        "custom_response",
-        "properties",
-        "body"
-      ],
-      "metadata": {
-        "inclusion": "available"
-      }
-    },
-    {
-      "breadcrumb": [
-        "properties",
-        "archived_at"
+        "disabled_at"
       ],
       "metadata": {
         "inclusion": "available"
@@ -125,15 +103,6 @@
       }
     },
     {
-      "breadcrumb": [
-        "properties",
-        "disabled_at"
-      ],
-      "metadata": {
-        "inclusion": "available"
-      }
-    },
-    {
       "breadcrumb": [],
       "metadata": {
         "inclusion": "available",
@@ -147,76 +116,40 @@
   ],
   "replication_method": "FULL_TABLE",
   "schema": {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": false,
+    "description": "Associated [Source](#source-object) object",
     "properties": {
-      "allowed_http_methods": {
-        "items": {
-          "enum": [
-            null,
-            "GET",
-            "POST",
-            "PUT",
-            "PATCH",
-            "DELETE"
-          ],
-          "type": [
-            "string"
-          ]
-        },
+      "authenticated": {
+        "description": "Whether the source is authenticated",
         "type": [
-          "array",
+          "boolean",
           "null"
         ]
       },
-      "archived_at": {
+      "config": {
+        "additionalProperties": true,
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "created_at": {
+        "description": "Date the source was created",
         "format": "date-time",
         "type": [
           "string",
           "null"
         ]
       },
-      "created_at": {
-        "format": "date-time",
-        "type": [
-          "string"
-        ]
-      },
-      "custom_response": {
-        "additionalProperties": true,
-        "properties": {
-          "body": {
-            "type": [
-              "string"
-            ]
-          },
-          "content_type": {
-            "enum": [
-              "json",
-              "text",
-              "xml"
-            ],
-            "type": [
-              "string"
-            ]
-          }
-        },
-        "required": [
-          "content_type",
-          "body"
-        ],
-        "type": [
-          "object",
-          "null"
-        ]
-      },
       "description": {
+        "description": "Description of the source",
         "type": [
           "string",
           "null"
         ]
       },
       "disabled_at": {
+        "description": "Date the source was disabled",
         "format": "date-time",
         "type": [
           "string",
@@ -224,37 +157,43 @@
         ]
       },
       "id": {
-        "type": [
-          "string"
-        ]
+        "description": "ID of the source",
+        "type": "string"
       },
       "name": {
-        "type": [
-          "string"
-        ]
-      },
-      "team_id": {
-        "type": [
-          "string"
-        ]
-      },
-      "updated_at": {
-        "format": "date-time",
-        "type": [
-          "string"
-        ]
-      },
-      "url": {
+        "description": "Name for the source",
         "type": [
           "string",
           "null"
         ]
       },
-      "verification": {
-        "additionalProperties": true,
-        "properties": {},
+      "team_id": {
+        "description": "ID of the project",
         "type": [
-          "object",
+          "string",
+          "null"
+        ]
+      },
+      "type": {
+        "description": "Type of the source",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "updated_at": {
+        "description": "Date the source was last updated",
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "url": {
+        "description": "A unique URL that must be supplied to your webhook's provider",
+        "format": "URL",
+        "type": [
+          "string",
           "null"
         ]
       }
@@ -263,6 +202,10 @@
       "id",
       "name",
       "team_id",
+      "url",
+      "type",
+      "authenticated",
+      "disabled_at",
       "updated_at",
       "created_at"
     ],

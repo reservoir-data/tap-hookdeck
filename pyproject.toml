@@ -25,7 +25,8 @@ dynamic = [
   "version",
 ]
 dependencies = [
-  "singer-sdk~=0.54.0a2",
+  "requests~=2.32",
+  "singer-sdk~=0.54.0a8",
 ]
 [[project.authors]]
 name = "Edgar Ramírez-Mondragón"
@@ -50,7 +51,7 @@ dev = [
 testing = [
   "deptry>=0.12",
   "pytest>=7.4",
-  "singer-sdk[testing]~=0.54.0a2",
+  "singer-sdk[testing]",
   "syrupy>=5.1",
 ]
 typing = [
@@ -62,8 +63,11 @@ typing = [
 [tool.hatch.version]
 source = "vcs"
 
+[tool.uv.sources]
+singer-sdk = { git = "https://github.com/meltano/sdk.git", rev = "main" }
+
 [tool.ruff]
-line-length = 100
+line-length = 120
 preview = true
 [tool.ruff.lint]
 select = [
