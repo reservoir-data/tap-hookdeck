@@ -1,0 +1,249 @@
+{
+  "key_properties": [
+    "id"
+  ],
+  "metadata": [
+    {
+      "breadcrumb": [
+        "properties",
+        "id"
+      ],
+      "metadata": {
+        "inclusion": "automatic"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "team_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "verified"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "original_event_data_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "rejection_cause"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "ingest_priority"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "ingested_at"
+      ],
+      "metadata": {
+        "inclusion": "automatic"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "source_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "events_count"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "cli_events_count"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "ignored_count"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "updated_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "created_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [],
+      "metadata": {
+        "inclusion": "available",
+        "replication-key": "ingested_at",
+        "selected": true,
+        "selected-by-default": true,
+        "table-key-properties": [
+          "id"
+        ],
+        "valid-replication-keys": [
+          "ingested_at"
+        ]
+      }
+    }
+  ],
+  "replication_key": "ingested_at",
+  "replication_method": "INCREMENTAL",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": false,
+    "properties": {
+      "cli_events_count": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "created_at": {
+        "format": "date-time",
+        "type": [
+          "string"
+        ]
+      },
+      "events_count": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "id": {
+        "type": [
+          "string"
+        ]
+      },
+      "ignored_count": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "ingest_priority": {
+        "enum": [
+          "NORMAL",
+          "LOW"
+        ],
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "ingested_at": {
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "original_event_data_id": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "rejection_cause": {
+        "enum": [
+          null,
+          "SOURCE_ARCHIVED",
+          "NO_WEBHOOK",
+          "VERIFICATION_FAILED",
+          "UNSUPPORTED_HTTP_METHOD",
+          "UNSUPPORTED_CONTENT_TYPE",
+          "UNPARSABLE_JSON",
+          "PAYLOAD_TOO_LARGE",
+          "INGESTION_FATAL",
+          "UNKNOWN"
+        ],
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "source_id": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "team_id": {
+        "type": [
+          "string"
+        ]
+      },
+      "updated_at": {
+        "format": "date-time",
+        "type": [
+          "string"
+        ]
+      },
+      "verified": {
+        "type": [
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "id",
+      "team_id",
+      "updated_at",
+      "created_at"
+    ],
+    "type": "object"
+  },
+  "stream": "requests",
+  "tap_stream_id": "requests"
+}

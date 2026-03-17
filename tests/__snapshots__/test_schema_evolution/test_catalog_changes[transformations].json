@@ -1,0 +1,173 @@
+{
+  "key_properties": [
+    "id"
+  ],
+  "metadata": [
+    {
+      "breadcrumb": [
+        "properties",
+        "id"
+      ],
+      "metadata": {
+        "inclusion": "automatic"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "team_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "name"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "code"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "encrypted_env"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "iv"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "env"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "updated_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "created_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [],
+      "metadata": {
+        "inclusion": "available",
+        "selected": true,
+        "selected-by-default": true,
+        "table-key-properties": [
+          "id"
+        ]
+      }
+    }
+  ],
+  "replication_method": "FULL_TABLE",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": false,
+    "properties": {
+      "code": {
+        "type": [
+          "string"
+        ]
+      },
+      "created_at": {
+        "format": "date-time",
+        "type": [
+          "string"
+        ]
+      },
+      "encrypted_env": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "env": {
+        "additionalProperties": {
+          "type": [
+            "string"
+          ]
+        },
+        "properties": {},
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "id": {
+        "type": [
+          "string"
+        ]
+      },
+      "iv": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "name": {
+        "type": [
+          "string"
+        ]
+      },
+      "team_id": {
+        "type": [
+          "string"
+        ]
+      },
+      "updated_at": {
+        "format": "date-time",
+        "type": [
+          "string"
+        ]
+      }
+    },
+    "required": [
+      "id",
+      "team_id",
+      "name",
+      "code",
+      "updated_at",
+      "created_at"
+    ],
+    "type": "object"
+  },
+  "stream": "transformations",
+  "tap_stream_id": "transformations"
+}

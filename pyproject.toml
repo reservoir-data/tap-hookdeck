@@ -51,6 +51,7 @@ testing = [
   "deptry>=0.12",
   "pytest>=7.4",
   "singer-sdk[testing]~=0.54.0a2",
+  "syrupy>=5.1",
 ]
 typing = [
   "mypy~=1.19.0",
