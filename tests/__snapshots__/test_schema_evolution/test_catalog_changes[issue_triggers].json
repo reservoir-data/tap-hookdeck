@@ -1,0 +1,274 @@
+{
+  "key_properties": [
+    "id"
+  ],
+  "metadata": [
+    {
+      "breadcrumb": [
+        "properties",
+        "id"
+      ],
+      "metadata": {
+        "inclusion": "automatic"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "team_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "name"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "type"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "configs"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "channels"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "channels",
+        "properties",
+        "slack"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "channels",
+        "properties",
+        "slack",
+        "properties",
+        "channel_name"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "channels",
+        "properties",
+        "opsgenie"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "channels",
+        "properties",
+        "email"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "disabled_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "updated_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "created_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "deleted_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [],
+      "metadata": {
+        "inclusion": "available",
+        "selected": true,
+        "selected-by-default": true,
+        "table-key-properties": [
+          "id"
+        ]
+      }
+    }
+  ],
+  "replication_method": "FULL_TABLE",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": false,
+    "properties": {
+      "channels": {
+        "additionalProperties": true,
+        "properties": {
+          "email": {
+            "additionalProperties": true,
+            "properties": {},
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "opsgenie": {
+            "additionalProperties": true,
+            "properties": {},
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "slack": {
+            "additionalProperties": true,
+            "properties": {
+              "channel_name": {
+                "type": [
+                  "string"
+                ]
+              }
+            },
+            "required": [
+              "channel_name"
+            ],
+            "type": [
+              "object",
+              "null"
+            ]
+          }
+        },
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "configs": {
+        "additionalProperties": true,
+        "properties": {},
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "created_at": {
+        "format": "date-time",
+        "type": [
+          "string"
+        ]
+      },
+      "deleted_at": {
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "disabled_at": {
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "id": {
+        "type": [
+          "string"
+        ]
+      },
+      "name": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "team_id": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "type": {
+        "enum": [
+          "delivery",
+          "transformation",
+          "backpressure",
+          "request"
+        ],
+        "type": [
+          "string"
+        ]
+      },
+      "updated_at": {
+        "format": "date-time",
+        "type": [
+          "string"
+        ]
+      }
+    },
+    "required": [
+      "id",
+      "type",
+      "updated_at",
+      "created_at"
+    ],
+    "type": "object"
+  },
+  "stream": "issue_triggers",
+  "tap_stream_id": "issue_triggers"
+}
