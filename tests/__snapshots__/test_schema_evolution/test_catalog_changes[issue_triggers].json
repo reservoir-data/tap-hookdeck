@@ -86,6 +86,41 @@
         "properties",
         "channels",
         "properties",
+        "microsoft_teams"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "channels",
+        "properties",
+        "microsoft_teams",
+        "properties",
+        "channel_name"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "channels",
+        "properties",
+        "pagerduty"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "channels",
+        "properties",
         "opsgenie"
       ],
       "metadata": {
@@ -153,22 +188,52 @@
   ],
   "replication_method": "FULL_TABLE",
   "schema": {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": false,
     "properties": {
       "channels": {
-        "additionalProperties": true,
+        "additionalProperties": false,
+        "description": "Notification channels object for the specific channel type",
         "properties": {
           "email": {
-            "additionalProperties": true,
+            "additionalProperties": false,
+            "description": "Email channel for an issue trigger",
             "properties": {},
             "type": [
               "object",
               "null"
             ]
           },
+          "microsoft_teams": {
+            "additionalProperties": false,
+            "description": "Channel for a 'Microsoft Teams' issue trigger",
+            "properties": {
+              "channel_name": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "channel_name"
+            ],
+            "type": [
+              "object",
+              "null"
+            ]
+          },
           "opsgenie": {
-            "additionalProperties": true,
+            "additionalProperties": false,
+            "description": "Integration channel for an issue trigger",
+            "properties": {},
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "pagerduty": {
+            "additionalProperties": false,
+            "description": "Integration channel for an issue trigger",
             "properties": {},
             "type": [
               "object",
@@ -176,11 +241,13 @@
             ]
           },
           "slack": {
-            "additionalProperties": true,
+            "additionalProperties": false,
+            "description": "Channel for a 'Slack' issue trigger",
             "properties": {
               "channel_name": {
                 "type": [
-                  "string"
+                  "string",
+                  "null"
                 ]
               }
             },
@@ -199,20 +266,176 @@
         ]
       },
       "configs": {
-        "additionalProperties": true,
-        "properties": {},
+        "anyOf": [
+          {
+            "additionalProperties": false,
+            "description": "Configurations for a 'delivery' issue trigger",
+            "properties": {
+              "connections": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                ],
+                "description": "A pattern to match on the connection name or array of connection IDs. Use `*` as wildcard.",
+                "x-docs-force-simple-type": true
+              },
+              "strategy": {
+                "description": "The strategy uses to open the issue",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "strategy",
+              "connections"
+            ],
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          {
+            "additionalProperties": false,
+            "description": "Configurations for a 'Transformation' issue trigger",
+            "properties": {
+              "log_level": {
+                "description": "The minimum log level to open the issue on",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "transformations": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                ],
+                "description": "A pattern to match on the transformation name or array of transformation IDs. Use `*` as wildcard.",
+                "x-docs-force-simple-type": true
+              }
+            },
+            "required": [
+              "log_level",
+              "transformations"
+            ],
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          {
+            "additionalProperties": false,
+            "description": "Configurations for a 'Backpressure' issue trigger",
+            "properties": {
+              "delay": {
+                "description": "The minimum delay (backpressure) to open the issue for min of 1 minute (60000) and max of 1 day (86400000)",
+                "maximum": 86400000,
+                "minimum": 60000,
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "x-docs-type": "integer"
+              },
+              "destinations": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                ],
+                "description": "A pattern to match on the destination name or array of destination IDs. Use `*` as wildcard.",
+                "x-docs-force-simple-type": true
+              }
+            },
+            "required": [
+              "delay",
+              "destinations"
+            ],
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          {
+            "additionalProperties": false,
+            "description": "Configurations for a 'Request' issue trigger",
+            "properties": {
+              "rejection_causes": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "items": {
+                      "type": "string",
+                      "x-docs-type": "string"
+                    },
+                    "type": "array"
+                  }
+                ],
+                "description": "An array of rejection causes to match on, or '*' to match all rejection causes.",
+                "x-docs-force-simple-type": true
+              },
+              "sources": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                ],
+                "description": "A pattern to match on the source name or array of source IDs. Use `*` as wildcard.",
+                "x-docs-force-simple-type": true
+              }
+            },
+            "required": [
+              "rejection_causes",
+              "sources"
+            ],
+            "type": [
+              "object",
+              "null"
+            ]
+          }
+        ],
+        "description": "Configuration object for the specific issue type selected"
+      },
+      "created_at": {
+        "description": "ISO timestamp for when the issue trigger was created",
+        "format": "date-time",
         "type": [
-          "object",
+          "string",
           "null"
         ]
       },
-      "created_at": {
-        "format": "date-time",
-        "type": [
-          "string"
-        ]
-      },
       "deleted_at": {
+        "description": "ISO timestamp for when the issue trigger was deleted",
         "format": "date-time",
         "type": [
           "string",
@@ -220,6 +443,7 @@
         ]
       },
       "disabled_at": {
+        "description": "ISO timestamp for when the issue trigger was disabled",
         "format": "date-time",
         "type": [
           "string",
@@ -227,43 +451,43 @@
         ]
       },
       "id": {
-        "type": [
-          "string"
-        ]
+        "description": "ID of the issue trigger",
+        "type": "string"
       },
       "name": {
+        "description": "Optional unique name to use as reference when using the API",
         "type": [
           "string",
           "null"
         ]
       },
       "team_id": {
+        "description": "ID of the project",
         "type": [
           "string",
           "null"
         ]
       },
       "type": {
-        "enum": [
-          "delivery",
-          "transformation",
-          "backpressure",
-          "request"
-        ],
+        "description": "Issue type",
         "type": [
-          "string"
+          "string",
+          "null"
         ]
       },
       "updated_at": {
+        "description": "ISO timestamp for when the issue trigger was last updated",
         "format": "date-time",
         "type": [
-          "string"
+          "string",
+          "null"
         ]
       }
     },
     "required": [
       "id",
       "type",
+      "configs",
       "updated_at",
       "created_at"
     ],

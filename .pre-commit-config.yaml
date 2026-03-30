@@ -1,8 +1,8 @@
 ci:
-  autofix_commit_msg: 'chore: pre-commit.ci auto fixes'
+  autofix_commit_msg: "chore: pre-commit.ci auto fixes"
   autofix_prs: true
   autoupdate_schedule: monthly
-  autoupdate_commit_msg: 'chore(deps): pre-commit autoupdate'
+  autoupdate_commit_msg: "chore(deps): pre-commit autoupdate"
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -35,12 +35,12 @@ repos:
   - repo: https://github.com/python-jsonschema/check-jsonschema
     rev: 0.37.0
     hooks:
-    - id: check-github-workflows
-    - id: check-meltano
-    - id: check-renovate
-      language: python
-      additional_dependencies:
-      - pyjson5==2.0.0
+      - id: check-github-workflows
+      - id: check-meltano
+      - id: check-renovate
+        language: python
+        additional_dependencies:
+          - pyjson5==2.0.0
 
   - repo: https://github.com/hukkin/mdformat
     rev: 1.0.0

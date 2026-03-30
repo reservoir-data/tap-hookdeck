@@ -42,7 +42,7 @@
     {
       "breadcrumb": [
         "properties",
-        "path_forwarding_disabled"
+        "type"
       ],
       "metadata": {
         "inclusion": "available"
@@ -51,7 +51,7 @@
     {
       "breadcrumb": [
         "properties",
-        "url"
+        "config"
       ],
       "metadata": {
         "inclusion": "available"
@@ -60,52 +60,7 @@
     {
       "breadcrumb": [
         "properties",
-        "cli_path"
-      ],
-      "metadata": {
-        "inclusion": "available"
-      }
-    },
-    {
-      "breadcrumb": [
-        "properties",
-        "rate_limit"
-      ],
-      "metadata": {
-        "inclusion": "available"
-      }
-    },
-    {
-      "breadcrumb": [
-        "properties",
-        "rate_limit_period"
-      ],
-      "metadata": {
-        "inclusion": "available"
-      }
-    },
-    {
-      "breadcrumb": [
-        "properties",
-        "http_method"
-      ],
-      "metadata": {
-        "inclusion": "available"
-      }
-    },
-    {
-      "breadcrumb": [
-        "properties",
-        "auth_method"
-      ],
-      "metadata": {
-        "inclusion": "available"
-      }
-    },
-    {
-      "breadcrumb": [
-        "properties",
-        "archived_at"
+        "disabled_at"
       ],
       "metadata": {
         "inclusion": "available"
@@ -130,15 +85,6 @@
       }
     },
     {
-      "breadcrumb": [
-        "properties",
-        "disabled_at"
-      ],
-      "metadata": {
-        "inclusion": "available"
-      }
-    },
-    {
       "breadcrumb": [],
       "metadata": {
         "inclusion": "available",
@@ -152,109 +98,67 @@
   ],
   "replication_method": "FULL_TABLE",
   "schema": {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": false,
+    "description": "Associated [Destination](#destination-object) object",
     "properties": {
-      "archived_at": {
-        "format": "date-time",
-        "type": [
-          "string",
-          "null"
-        ]
-      },
-      "auth_method": {
+      "config": {
         "additionalProperties": true,
-        "properties": {},
         "type": [
           "object",
           "null"
         ]
       },
-      "cli_path": {
+      "created_at": {
+        "description": "Date the destination was created",
+        "format": "date-time",
         "type": [
           "string",
           "null"
         ]
       },
-      "created_at": {
-        "format": "date-time",
-        "type": [
-          "string"
-        ]
-      },
       "description": {
+        "description": "Description of the destination",
         "type": [
           "string",
           "null"
         ]
       },
       "disabled_at": {
+        "description": "Date the destination was disabled",
         "format": "date-time",
-        "type": [
-          "string",
-          "null"
-        ]
-      },
-      "http_method": {
-        "enum": [
-          null,
-          "GET",
-          "POST",
-          "PUT",
-          "PATCH",
-          "DELETE"
-        ],
         "type": [
           "string",
           "null"
         ]
       },
       "id": {
-        "type": [
-          "string"
-        ]
+        "description": "ID of the destination",
+        "type": "string"
       },
       "name": {
-        "type": [
-          "string"
-        ]
-      },
-      "path_forwarding_disabled": {
-        "type": [
-          "boolean",
-          "null"
-        ]
-      },
-      "rate_limit": {
-        "type": [
-          "integer",
-          "null"
-        ]
-      },
-      "rate_limit_period": {
-        "enum": [
-          "second",
-          "minute",
-          "hour",
-          "concurrent"
-        ],
+        "description": "A unique, human-friendly name for the destination",
         "type": [
           "string",
           "null"
         ]
       },
       "team_id": {
+        "description": "ID of the project",
         "type": [
-          "string"
+          "string",
+          "null"
+        ]
+      },
+      "type": {
+        "description": "Type of the destination",
+        "type": [
+          "string",
+          "null"
         ]
       },
       "updated_at": {
+        "description": "Date the destination was last updated",
         "format": "date-time",
-        "type": [
-          "string"
-        ]
-      },
-      "url": {
         "type": [
           "string",
           "null"
@@ -265,6 +169,8 @@
       "id",
       "name",
       "team_id",
+      "type",
+      "disabled_at",
       "updated_at",
       "created_at"
     ],
