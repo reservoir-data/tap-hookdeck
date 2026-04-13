@@ -106,7 +106,7 @@
         "properties",
         "destination",
         "properties",
-        "path_forwarding_disabled"
+        "type"
       ],
       "metadata": {
         "inclusion": "available"
@@ -117,7 +117,7 @@
         "properties",
         "destination",
         "properties",
-        "url"
+        "config"
       ],
       "metadata": {
         "inclusion": "available"
@@ -128,62 +128,7 @@
         "properties",
         "destination",
         "properties",
-        "cli_path"
-      ],
-      "metadata": {
-        "inclusion": "available"
-      }
-    },
-    {
-      "breadcrumb": [
-        "properties",
-        "destination",
-        "properties",
-        "rate_limit"
-      ],
-      "metadata": {
-        "inclusion": "available"
-      }
-    },
-    {
-      "breadcrumb": [
-        "properties",
-        "destination",
-        "properties",
-        "rate_limit_period"
-      ],
-      "metadata": {
-        "inclusion": "available"
-      }
-    },
-    {
-      "breadcrumb": [
-        "properties",
-        "destination",
-        "properties",
-        "http_method"
-      ],
-      "metadata": {
-        "inclusion": "available"
-      }
-    },
-    {
-      "breadcrumb": [
-        "properties",
-        "destination",
-        "properties",
-        "auth_method"
-      ],
-      "metadata": {
-        "inclusion": "available"
-      }
-    },
-    {
-      "breadcrumb": [
-        "properties",
-        "destination",
-        "properties",
-        "archived_at"
+        "disabled_at"
       ],
       "metadata": {
         "inclusion": "available"
@@ -206,17 +151,6 @@
         "destination",
         "properties",
         "created_at"
-      ],
-      "metadata": {
-        "inclusion": "available"
-      }
-    },
-    {
-      "breadcrumb": [
-        "properties",
-        "destination",
-        "properties",
-        "disabled_at"
       ],
       "metadata": {
         "inclusion": "available"
@@ -291,7 +225,7 @@
         "properties",
         "source",
         "properties",
-        "verification"
+        "type"
       ],
       "metadata": {
         "inclusion": "available"
@@ -302,7 +236,7 @@
         "properties",
         "source",
         "properties",
-        "allowed_http_methods"
+        "authenticated"
       ],
       "metadata": {
         "inclusion": "available"
@@ -313,7 +247,7 @@
         "properties",
         "source",
         "properties",
-        "custom_response"
+        "config"
       ],
       "metadata": {
         "inclusion": "available"
@@ -324,33 +258,7 @@
         "properties",
         "source",
         "properties",
-        "custom_response",
-        "properties",
-        "content_type"
-      ],
-      "metadata": {
-        "inclusion": "available"
-      }
-    },
-    {
-      "breadcrumb": [
-        "properties",
-        "source",
-        "properties",
-        "custom_response",
-        "properties",
-        "body"
-      ],
-      "metadata": {
-        "inclusion": "available"
-      }
-    },
-    {
-      "breadcrumb": [
-        "properties",
-        "source",
-        "properties",
-        "archived_at"
+        "disabled_at"
       ],
       "metadata": {
         "inclusion": "available"
@@ -381,17 +289,6 @@
     {
       "breadcrumb": [
         "properties",
-        "source",
-        "properties",
-        "disabled_at"
-      ],
-      "metadata": {
-        "inclusion": "available"
-      }
-    },
-    {
-      "breadcrumb": [
-        "properties",
         "rules"
       ],
       "metadata": {
@@ -401,7 +298,7 @@
     {
       "breadcrumb": [
         "properties",
-        "archived_at"
+        "disabled_at"
       ],
       "metadata": {
         "inclusion": "available"
@@ -448,23 +345,18 @@
   ],
   "replication_method": "FULL_TABLE",
   "schema": {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": false,
     "properties": {
-      "archived_at": {
+      "created_at": {
+        "description": "Date the connection was created",
         "format": "date-time",
         "type": [
           "string",
           "null"
         ]
       },
-      "created_at": {
-        "format": "date-time",
-        "type": [
-          "string"
-        ]
-      },
       "description": {
+        "description": "Description of the connection",
         "type": [
           "string",
           "null"
@@ -472,107 +364,69 @@
       },
       "destination": {
         "additionalProperties": false,
+        "description": "Associated [Destination](#destination-object) object",
         "properties": {
-          "archived_at": {
-            "format": "date-time",
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "auth_method": {
+          "config": {
             "additionalProperties": true,
-            "properties": {},
             "type": [
               "object",
               "null"
             ]
           },
-          "cli_path": {
+          "created_at": {
+            "description": "Date the destination was created",
+            "format": "date-time",
             "type": [
               "string",
               "null"
             ]
           },
-          "created_at": {
-            "format": "date-time",
-            "type": [
-              "string"
-            ]
-          },
           "description": {
+            "description": "Description of the destination",
             "type": [
               "string",
               "null"
             ]
           },
           "disabled_at": {
+            "description": "Date the destination was disabled",
             "format": "date-time",
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "http_method": {
-            "enum": [
-              null,
-              "GET",
-              "POST",
-              "PUT",
-              "PATCH",
-              "DELETE"
-            ],
             "type": [
               "string",
               "null"
             ]
           },
           "id": {
+            "description": "ID of the destination",
             "type": [
-              "string"
+              "string",
+              "null"
             ]
           },
           "name": {
-            "type": [
-              "string"
-            ]
-          },
-          "path_forwarding_disabled": {
-            "type": [
-              "boolean",
-              "null"
-            ]
-          },
-          "rate_limit": {
-            "type": [
-              "integer",
-              "null"
-            ]
-          },
-          "rate_limit_period": {
-            "enum": [
-              "second",
-              "minute",
-              "hour",
-              "concurrent"
-            ],
+            "description": "A unique, human-friendly name for the destination",
             "type": [
               "string",
               "null"
             ]
           },
           "team_id": {
+            "description": "ID of the project",
             "type": [
-              "string"
+              "string",
+              "null"
+            ]
+          },
+          "type": {
+            "description": "Type of the destination",
+            "type": [
+              "string",
+              "null"
             ]
           },
           "updated_at": {
+            "description": "Date the destination was last updated",
             "format": "date-time",
-            "type": [
-              "string"
-            ]
-          },
-          "url": {
             "type": [
               "string",
               "null"
@@ -583,29 +437,44 @@
           "id",
           "name",
           "team_id",
+          "type",
+          "disabled_at",
           "updated_at",
           "created_at"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "disabled_at": {
+        "description": "Date the connection was disabled",
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
       },
       "full_name": {
+        "description": "Full name of the connection concatenated from source, connection and desitnation name",
         "type": [
           "string",
           "null"
         ]
       },
       "id": {
-        "type": [
-          "string"
-        ]
+        "description": "ID of the connection",
+        "type": "string"
       },
       "name": {
+        "description": "Unique name of the connection for this source",
         "type": [
           "string",
           "null"
         ]
       },
       "paused_at": {
+        "description": "Date the connection was paused",
         "format": "date-time",
         "type": [
           "string",
@@ -613,10 +482,375 @@
         ]
       },
       "rules": {
+        "description": "Array of rules configured on the connection",
         "items": {
-          "additionalProperties": true,
-          "properties": {},
-          "type": "object"
+          "anyOf": [
+            {
+              "additionalProperties": false,
+              "properties": {
+                "count": {
+                  "description": "Maximum number of retries to attempt",
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "interval": {
+                  "description": "Time in MS between each retry",
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "response_status_codes": {
+                  "description": "HTTP codes to retry on. Accepts: range expressions (e.g., \"400-499\", \">400\"), specific codes (e.g., 404), and exclusions (e.g., \"!401\"). Example: [\"500-599\", \">400\", 404, \"!401\"]",
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 10,
+                  "minItems": 1,
+                  "type": [
+                    "array",
+                    "null"
+                  ]
+                },
+                "strategy": {
+                  "description": "Algorithm to use when calculating delay between retries",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "type": {
+                  "description": "A retry rule must be of type `retry`",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "type",
+                "strategy"
+              ],
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "body": {
+                  "anyOf": [
+                    {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "x-fern-type-name": "FilterRulePropertyString"
+                    },
+                    {
+                      "format": "float",
+                      "type": [
+                        "number",
+                        "null"
+                      ],
+                      "x-fern-type-name": "FilterRulePropertyNumber"
+                    },
+                    {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ],
+                      "x-fern-type-name": "FilterRulePropertyBoolean"
+                    },
+                    {
+                      "additionalProperties": true,
+                      "properties": {},
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "x-fern-type-name": "FilterRulePropertyJSON"
+                    }
+                  ],
+                  "description": "JSON using our filter syntax to filter on request headers",
+                  "x-docs-force-simple-type": true,
+                  "x-docs-type": "JSON"
+                },
+                "headers": {
+                  "anyOf": [
+                    {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "x-fern-type-name": "FilterRulePropertyString"
+                    },
+                    {
+                      "format": "float",
+                      "type": [
+                        "number",
+                        "null"
+                      ],
+                      "x-fern-type-name": "FilterRulePropertyNumber"
+                    },
+                    {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ],
+                      "x-fern-type-name": "FilterRulePropertyBoolean"
+                    },
+                    {
+                      "additionalProperties": true,
+                      "properties": {},
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "x-fern-type-name": "FilterRulePropertyJSON"
+                    }
+                  ],
+                  "description": "JSON using our filter syntax to filter on request headers",
+                  "x-docs-force-simple-type": true,
+                  "x-docs-type": "JSON"
+                },
+                "path": {
+                  "anyOf": [
+                    {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "x-fern-type-name": "FilterRulePropertyString"
+                    },
+                    {
+                      "format": "float",
+                      "type": [
+                        "number",
+                        "null"
+                      ],
+                      "x-fern-type-name": "FilterRulePropertyNumber"
+                    },
+                    {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ],
+                      "x-fern-type-name": "FilterRulePropertyBoolean"
+                    },
+                    {
+                      "additionalProperties": true,
+                      "properties": {},
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "x-fern-type-name": "FilterRulePropertyJSON"
+                    }
+                  ],
+                  "description": "JSON using our filter syntax to filter on request headers",
+                  "x-docs-force-simple-type": true,
+                  "x-docs-type": "JSON"
+                },
+                "query": {
+                  "anyOf": [
+                    {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "x-fern-type-name": "FilterRulePropertyString"
+                    },
+                    {
+                      "format": "float",
+                      "type": [
+                        "number",
+                        "null"
+                      ],
+                      "x-fern-type-name": "FilterRulePropertyNumber"
+                    },
+                    {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ],
+                      "x-fern-type-name": "FilterRulePropertyBoolean"
+                    },
+                    {
+                      "additionalProperties": true,
+                      "properties": {},
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "x-fern-type-name": "FilterRulePropertyJSON"
+                    }
+                  ],
+                  "description": "JSON using our filter syntax to filter on request headers",
+                  "x-docs-force-simple-type": true,
+                  "x-docs-type": "JSON"
+                },
+                "type": {
+                  "description": "A filter rule must be of type `filter`",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "type"
+              ],
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "transformation": {
+                  "additionalProperties": false,
+                  "description": "You can optionally define a new transformation while creating a transform rule",
+                  "properties": {
+                    "code": {
+                      "description": "A string representation of your JavaScript (ES6) code to run",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "env": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "A key-value object of environment variables to encrypt and expose to your transformation code",
+                      "properties": {},
+                      "type": [
+                        "object",
+                        "null"
+                      ]
+                    },
+                    "name": {
+                      "description": "The unique name of the transformation",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "code"
+                  ],
+                  "type": [
+                    "object",
+                    "null"
+                  ]
+                },
+                "transformation_id": {
+                  "description": "ID of the attached transformation object. Optional input, always set once the rule is defined",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "type": {
+                  "description": "A transformation rule must be of type `transform`",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "type"
+              ],
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "delay": {
+                  "description": "Delay to introduce in MS",
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "type": {
+                  "description": "A delay rule must be of type `delay`",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "type",
+                "delay"
+              ],
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "exclude_fields": {
+                  "description": "Fields to exclude when generating deduplicate key. Supports root fields (e.g., \"headers\"), dot notation (e.g., \"body.user.id\"), array wildcards (e.g., \"body.items[*].sku\"), and array indices (e.g., \"body.items[0].name\"). Array notation must be followed by a property name.",
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": [
+                    "array",
+                    "null"
+                  ]
+                },
+                "include_fields": {
+                  "description": "Fields to include when generating deduplicate key. Supports root fields (e.g., \"headers\"), dot notation (e.g., \"body.user.id\"), array wildcards (e.g., \"body.items[*].sku\"), and array indices (e.g., \"body.items[0].name\"). Array notation must be followed by a property name.",
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": [
+                    "array",
+                    "null"
+                  ]
+                },
+                "type": {
+                  "description": "A deduplicate rule must be of type `deduplicate`",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "window": {
+                  "description": "Time window in milliseconds for deduplicate",
+                  "maximum": 3600000,
+                  "minimum": 1000,
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "type",
+                "window"
+              ],
+              "type": [
+                "object",
+                "null"
+              ]
+            }
+          ]
         },
         "type": [
           "array",
@@ -625,74 +859,39 @@
       },
       "source": {
         "additionalProperties": false,
+        "description": "Associated [Source](#source-object) object",
         "properties": {
-          "allowed_http_methods": {
-            "items": {
-              "enum": [
-                null,
-                "GET",
-                "POST",
-                "PUT",
-                "PATCH",
-                "DELETE"
-              ],
-              "type": [
-                "string"
-              ]
-            },
+          "authenticated": {
+            "description": "Whether the source is authenticated",
             "type": [
-              "array",
+              "boolean",
               "null"
             ]
           },
-          "archived_at": {
+          "config": {
+            "additionalProperties": true,
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "created_at": {
+            "description": "Date the source was created",
             "format": "date-time",
             "type": [
               "string",
               "null"
             ]
           },
-          "created_at": {
-            "format": "date-time",
-            "type": [
-              "string"
-            ]
-          },
-          "custom_response": {
-            "additionalProperties": true,
-            "properties": {
-              "body": {
-                "type": [
-                  "string"
-                ]
-              },
-              "content_type": {
-                "enum": [
-                  "json",
-                  "text",
-                  "xml"
-                ],
-                "type": [
-                  "string"
-                ]
-              }
-            },
-            "required": [
-              "content_type",
-              "body"
-            ],
-            "type": [
-              "object",
-              "null"
-            ]
-          },
           "description": {
+            "description": "Description of the source",
             "type": [
               "string",
               "null"
             ]
           },
           "disabled_at": {
+            "description": "Date the source was disabled",
             "format": "date-time",
             "type": [
               "string",
@@ -700,37 +899,46 @@
             ]
           },
           "id": {
-            "type": [
-              "string"
-            ]
-          },
-          "name": {
-            "type": [
-              "string"
-            ]
-          },
-          "team_id": {
-            "type": [
-              "string"
-            ]
-          },
-          "updated_at": {
-            "format": "date-time",
-            "type": [
-              "string"
-            ]
-          },
-          "url": {
+            "description": "ID of the source",
             "type": [
               "string",
               "null"
             ]
           },
-          "verification": {
-            "additionalProperties": true,
-            "properties": {},
+          "name": {
+            "description": "Name for the source",
             "type": [
-              "object",
+              "string",
+              "null"
+            ]
+          },
+          "team_id": {
+            "description": "ID of the project",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "type": {
+            "description": "Type of the source",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "updated_at": {
+            "description": "Date the source was last updated",
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "url": {
+            "description": "A unique URL that must be supplied to your webhook's provider",
+            "format": "URL",
+            "type": [
+              "string",
               "null"
             ]
           }
@@ -739,28 +947,45 @@
           "id",
           "name",
           "team_id",
+          "url",
+          "type",
+          "authenticated",
+          "disabled_at",
           "updated_at",
           "created_at"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "team_id": {
+        "description": "ID of the project",
         "type": [
-          "string"
+          "string",
+          "null"
         ]
       },
       "updated_at": {
+        "description": "Date the connection was last updated",
         "format": "date-time",
         "type": [
-          "string"
+          "string",
+          "null"
         ]
       }
     },
     "required": [
       "id",
+      "name",
+      "full_name",
+      "description",
       "team_id",
       "destination",
       "source",
+      "rules",
+      "disabled_at",
+      "paused_at",
       "updated_at",
       "created_at"
     ],
