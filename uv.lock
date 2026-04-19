@@ -651,8 +651,8 @@ wheels = [
 
 [[package]]
 name = "singer-sdk"
-version = "0.54.0a7"
-source = { registry = "https://pypi.org/simple" }
+version = "0.54.0a9.dev23+g94b4cb6ac"
+source = { git = "https://github.com/meltano/sdk.git?rev=main#94b4cb6acba37f6475379032a2e58f174791c4d6" }
 dependencies = [
     { name = "click" },
     { name = "fsspec" },
@@ -672,10 +672,6 @@ dependencies = [
     { name = "typing-extensions", marker = "python_full_version < '3.13'" },
     { name = "universal-pathlib" },
     { name = "urllib3" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/e2/df/9eef3e1f4dad3d2c97a897c4227522efc2189347adf3aa49ce16cc1001d8/singer_sdk-0.54.0a7.tar.gz", hash = "sha256:5dd0a591dc334db02c19226fbd2a713ed63b2ec899144dcc9a80c3842fbde271", size = 1377452, upload-time = "2026-03-13T15:09:26.283Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/70/67/6d012d6f985de2d593919a883567f7e06a3cb3c0cbd3162bb70413f6fac4/singer_sdk-0.54.0a7-py3-none-any.whl", hash = "sha256:98d3820495ef1f23c4995c6002038c60a34d5839c6475f4ee34eb598ecfc2769", size = 214566, upload-time = "2026-03-13T15:09:23.318Z" },
 ]
 
 [package.optional-dependencies]
@@ -745,6 +741,7 @@ wheels = [
 name = "tap-hookdeck"
 source = { editable = "." }
 dependencies = [
+    { name = "requests" },
     { name = "singer-sdk" },
 ]
 
@@ -769,21 +766,24 @@ typing = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "singer-sdk", specifier = "~=0.54.0a2" }]
+requires-dist = [
+    { name = "requests", specifier = "~=2.32" },
+    { name = "singer-sdk", git = "https://github.com/meltano/sdk.git?rev=main" },
+]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "deptry", specifier = ">=0.12" },
     { name = "mypy", specifier = "~=1.19.0" },
     { name = "pytest", specifier = ">=7.4" },
-    { name = "singer-sdk", extras = ["testing"], specifier = "~=0.54.0a2" },
+    { name = "singer-sdk", extras = ["testing"], git = "https://github.com/meltano/sdk.git?rev=main" },
     { name = "syrupy", specifier = ">=5.1" },
     { name = "ty", specifier = ">=0.0.1a21" },
 ]
 testing = [
     { name = "deptry", specifier = ">=0.12" },
     { name = "pytest", specifier = ">=7.4" },
-    { name = "singer-sdk", extras = ["testing"], specifier = "~=0.54.0a2" },
+    { name = "singer-sdk", extras = ["testing"], git = "https://github.com/meltano/sdk.git?rev=main" },
     { name = "syrupy", specifier = ">=5.1" },
 ]
 typing = [
