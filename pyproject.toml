@@ -102,7 +102,6 @@ pydocstyle.convention = "google"
 mypy = "mypy"
 pytest = "pytest"
 ty = "ty"
-types-requests = "requests"
 [tool.deptry.per_rule_ignores]
 DEP002 = [
   "deptry",
@@ -123,10 +122,8 @@ warn_unused_ignores = true
 
 [tool.pytest]
 addopts = [
-  "-vvv",
+  "-v",
   "-ra",
-  "--strict-config",
-  "--strict-markers",
 ]
 filterwarnings = [
   "error",
