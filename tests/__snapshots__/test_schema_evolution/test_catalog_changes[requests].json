@@ -51,15 +51,6 @@
     {
       "breadcrumb": [
         "properties",
-        "ingest_priority"
-      ],
-      "metadata": {
-        "inclusion": "available"
-      }
-    },
-    {
-      "breadcrumb": [
-        "properties",
         "ingested_at"
       ],
       "metadata": {
@@ -121,6 +112,81 @@
       }
     },
     {
+      "breadcrumb": [
+        "properties",
+        "data"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data",
+        "properties",
+        "path"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data",
+        "properties",
+        "query"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data",
+        "properties",
+        "parsed_query"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data",
+        "properties",
+        "headers"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data",
+        "properties",
+        "body"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data",
+        "properties",
+        "is_large_payload"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
       "breadcrumb": [],
       "metadata": {
         "inclusion": "available",
@@ -139,31 +205,127 @@
   "replication_key": "ingested_at",
   "replication_method": "INCREMENTAL",
   "schema": {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": false,
     "properties": {
       "cli_events_count": {
+        "description": "The count of CLI events created from this request",
         "type": [
           "integer",
           "null"
         ]
       },
       "created_at": {
+        "description": "\tDate the event was created",
         "format": "date-time",
         "type": [
-          "string"
+          "string",
+          "null"
+        ]
+      },
+      "data": {
+        "additionalProperties": false,
+        "description": "Request data",
+        "properties": {
+          "body": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "properties": {},
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              {
+                "items": {},
+                "type": "array"
+              }
+            ],
+            "description": "JSON or string representation of the body"
+          },
+          "headers": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "nullable": true,
+                  "type": "string"
+                },
+                "properties": {},
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            ],
+            "description": "JSON representation of the headers"
+          },
+          "is_large_payload": {
+            "description": "Whether the payload is considered large payload and not searchable",
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "parsed_query": {
+            "anyOf": [
+              {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              {
+                "properties": {},
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            ],
+            "description": "JSON representation of query params"
+          },
+          "path": {
+            "description": "Request path",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "query": {
+            "description": "Raw query param string",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "query",
+          "parsed_query",
+          "headers",
+          "body"
+        ],
+        "type": [
+          "object",
+          "null"
         ]
       },
       "events_count": {
+        "description": "The count of events created from this request (CLI events not included)",
         "type": [
           "integer",
           "null"
         ]
       },
       "id": {
-        "type": [
-          "string"
-        ]
+        "description": "ID of the request",
+        "type": "string"
       },
       "ignored_count": {
         "type": [
@@ -171,17 +333,8 @@
           "null"
         ]
       },
-      "ingest_priority": {
-        "enum": [
-          "NORMAL",
-          "LOW"
-        ],
-        "type": [
-          "string",
-          "null"
-        ]
-      },
       "ingested_at": {
+        "description": "The time the request was originally received",
         "format": "date-time",
         "type": [
           "string",
@@ -189,47 +342,42 @@
         ]
       },
       "original_event_data_id": {
+        "description": "ID of the request data",
         "type": [
           "string",
           "null"
         ]
       },
       "rejection_cause": {
-        "enum": [
-          null,
-          "SOURCE_ARCHIVED",
-          "NO_WEBHOOK",
-          "VERIFICATION_FAILED",
-          "UNSUPPORTED_HTTP_METHOD",
-          "UNSUPPORTED_CONTENT_TYPE",
-          "UNPARSABLE_JSON",
-          "PAYLOAD_TOO_LARGE",
-          "INGESTION_FATAL",
-          "UNKNOWN"
-        ],
         "type": [
           "string",
           "null"
         ]
       },
       "source_id": {
+        "description": "ID of the associated source",
         "type": [
           "string",
           "null"
         ]
       },
       "team_id": {
+        "description": "ID of the project",
         "type": [
-          "string"
+          "string",
+          "null"
         ]
       },
       "updated_at": {
+        "description": "Date the event was last updated",
         "format": "date-time",
         "type": [
-          "string"
+          "string",
+          "null"
         ]
       },
       "verified": {
+        "description": "Whether or not the request was verified when received",
         "type": [
           "boolean",
           "null"
@@ -239,6 +387,14 @@
     "required": [
       "id",
       "team_id",
+      "verified",
+      "original_event_data_id",
+      "rejection_cause",
+      "ingested_at",
+      "source_id",
+      "events_count",
+      "cli_events_count",
+      "ignored_count",
       "updated_at",
       "created_at"
     ],

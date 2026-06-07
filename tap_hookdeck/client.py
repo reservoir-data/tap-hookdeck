@@ -12,10 +12,13 @@ if TYPE_CHECKING:
     from singer_sdk.helpers.types import Context
 
 
+API_VERSION = "2025-07-01"
+
+
 class HookdeckStream(RESTStream[str]):
     """Hookdeck stream class."""
 
-    url_base = "https://api.hookdeck.com"
+    url_base = f"https://api.hookdeck.com/{API_VERSION}"
     records_jsonpath = "$.models[*]"
     next_page_token_jsonpath = "$.pagination.next"  # noqa: S105
 
@@ -36,16 +39,8 @@ class HookdeckStream(RESTStream[str]):
         )
 
     @override
-    def get_url_params(
-        self,
-        context: Context | None,
-        next_page_token: str | None,
-    ) -> dict[str, Any]:
+    def get_url_params(self, context: Context | None, next_page_token: str | None) -> dict[str, Any]:
         """Get URL query parameters.
-
-        Args:
-            context: Stream sync context.
-            next_page_token: Next offset.
 
         Returns:
             Mapping of URL query parameters.

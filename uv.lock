@@ -780,6 +780,7 @@ wheels = [
 name = "tap-hookdeck"
 source = { editable = "." }
 dependencies = [
+    { name = "requests" },
     { name = "singer-sdk" },
 ]
 
@@ -804,21 +805,24 @@ typing = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "singer-sdk", specifier = "~=0.54.0a2" }]
+requires-dist = [
+    { name = "requests", specifier = "~=2.32" },
+    { name = "singer-sdk", specifier = "~=0.54.0a8" },
+]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "deptry", specifier = ">=0.12" },
     { name = "mypy", specifier = "~=1.19.0" },
     { name = "pytest", specifier = ">=7.4" },
-    { name = "singer-sdk", extras = ["testing"], specifier = "~=0.54.0a2" },
+    { name = "singer-sdk", extras = ["testing"] },
     { name = "syrupy", specifier = ">=5.1" },
     { name = "ty", specifier = ">=0.0.1a21" },
 ]
 testing = [
     { name = "deptry", specifier = ">=0.12" },
     { name = "pytest", specifier = ">=7.4" },
-    { name = "singer-sdk", extras = ["testing"], specifier = "~=0.54.0a2" },
+    { name = "singer-sdk", extras = ["testing"] },
     { name = "syrupy", specifier = ">=5.1" },
 ]
 typing = [
