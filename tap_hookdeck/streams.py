@@ -48,8 +48,8 @@ class Connections(HookdeckStream):
     # Incremental not supported
     replication_key = None
 
-    @override
     @property
+    @override
     def is_sorted(self) -> bool:
         return True
 
@@ -59,11 +59,6 @@ class Connections(HookdeckStream):
         context: Context | None,
         next_page_token: str | None,
     ) -> dict[str, Any]:
-        """Get URL query parameters.
-
-        Returns:
-            Query paramaters.
-        """
         params = super().get_url_params(context, next_page_token)
         params["archived"] = True
         return params

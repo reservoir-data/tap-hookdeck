@@ -24,14 +24,9 @@ class HookdeckStream(RESTStream[str]):
 
     TYPE_CONFORMANCE_LEVEL = TypeConformanceLevel.ROOT_ONLY
 
-    @override
     @property
+    @override
     def authenticator(self) -> APIKeyAuthenticator:
-        """Get an authenticator object.
-
-        Returns:
-            The authenticator instance for this REST stream.
-        """
         return APIKeyAuthenticator(
             key="Authorization",
             value=f"Bearer {self.config['api_key']}",
@@ -40,11 +35,6 @@ class HookdeckStream(RESTStream[str]):
 
     @override
     def get_url_params(self, context: Context | None, next_page_token: str | None) -> dict[str, Any]:
-        """Get URL query parameters.
-
-        Returns:
-            Mapping of URL query parameters.
-        """
         # https://hookdeck.com/docs/api#paging
         params: dict[str, Any] = {
             "limit": 250,
