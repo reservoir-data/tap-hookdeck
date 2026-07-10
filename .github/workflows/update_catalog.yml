@@ -42,7 +42,7 @@ jobs:
     - uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
       with:
         version: ${{ env.UV_VERSION }}
-    - run: uv run scripts/update_openapi.py
+    - run: uv run scripts/update_catalog.py
     - run: uv run pytest --snapshot-update tests/test_schema_evolution.py
     - id: check_snapshot_changes
       continue-on-error: true
