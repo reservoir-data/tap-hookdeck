@@ -20,7 +20,7 @@ class HookdeckStream(RESTStream[str]):
 
     url_base = f"https://api.hookdeck.com/{API_VERSION}"
     records_jsonpath = "$.models[*]"
-    next_page_token_jsonpath = "$.pagination.next"  # noqa: S105
+    next_page_token_jsonpath = "$.pagination.next"  # ruff: ignore[hardcoded-password-string]
 
     TYPE_CONFORMANCE_LEVEL = TypeConformanceLevel.ROOT_ONLY
 
