@@ -30,9 +30,9 @@ A full list of supported settings and capabilities is available by running: `tap
 
 ## Supported Python Versions
 
-- 3.12
 - 3.13
 - 3.14
+- 3.15
 
 ### Source Authentication and Authorization
 
