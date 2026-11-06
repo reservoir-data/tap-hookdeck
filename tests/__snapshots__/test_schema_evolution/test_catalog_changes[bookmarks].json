@@ -1,0 +1,349 @@
+{
+  "key_properties": [
+    "id"
+  ],
+  "metadata": [
+    {
+      "breadcrumb": [
+        "properties",
+        "id"
+      ],
+      "metadata": {
+        "inclusion": "automatic"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "team_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "webhook_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "event_data_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "label"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "alias"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data",
+        "properties",
+        "path"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data",
+        "properties",
+        "query"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data",
+        "properties",
+        "parsed_query"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data",
+        "properties",
+        "headers"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data",
+        "properties",
+        "body"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data",
+        "properties",
+        "is_large_payload"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "last_used_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "updated_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "created_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [],
+      "metadata": {
+        "inclusion": "available",
+        "selected": true,
+        "selected-by-default": true,
+        "table-key-properties": [
+          "id"
+        ]
+      }
+    }
+  ],
+  "replication_method": "FULL_TABLE",
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "alias": {
+        "description": "Alternate alias for the bookmark",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "created_at": {
+        "description": "Date the bookmark was created",
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "data": {
+        "additionalProperties": false,
+        "description": "Request data",
+        "properties": {
+          "body": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "properties": {},
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              {
+                "items": {},
+                "type": "array"
+              }
+            ],
+            "description": "JSON or string representation of the body"
+          },
+          "headers": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "nullable": true,
+                  "type": "string"
+                },
+                "properties": {},
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            ],
+            "description": "JSON representation of the headers"
+          },
+          "is_large_payload": {
+            "description": "Whether the payload is considered large payload and not searchable",
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "parsed_query": {
+            "anyOf": [
+              {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              {
+                "properties": {},
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            ],
+            "description": "JSON representation of query params"
+          },
+          "path": {
+            "description": "Request path",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "query": {
+            "description": "Raw query param string",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "query",
+          "parsed_query",
+          "headers",
+          "body"
+        ],
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "event_data_id": {
+        "description": "ID of the bookmarked event data",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "id": {
+        "description": "ID of the bookmark",
+        "type": "string"
+      },
+      "label": {
+        "description": "Descriptive name of the bookmark",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "last_used_at": {
+        "description": "Date the bookmark was last manually triggered",
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "team_id": {
+        "description": "ID of the project",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "updated_at": {
+        "description": "Date the bookmark was last updated",
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "webhook_id": {
+        "description": "ID of the associated connection (webhook)",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "id",
+      "team_id",
+      "webhook_id",
+      "event_data_id",
+      "label",
+      "updated_at",
+      "created_at"
+    ],
+    "type": "object"
+  },
+  "stream": "bookmarks",
+  "tap_stream_id": "bookmarks"
+}

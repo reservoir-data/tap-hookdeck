@@ -1,0 +1,2653 @@
+{
+  "key_properties": [
+    "id"
+  ],
+  "metadata": [
+    {
+      "breadcrumb": [
+        "properties",
+        "id"
+      ],
+      "metadata": {
+        "inclusion": "automatic"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "team_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "status"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "opened_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "first_seen_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "last_seen_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "last_updated_by"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "dismissed_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "auto_resolved_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "merged_with"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "updated_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "created_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "type"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "aggregation_keys"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "reference"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [],
+      "metadata": {
+        "inclusion": "available",
+        "selected": true,
+        "selected-by-default": true,
+        "table-key-properties": [
+          "id"
+        ]
+      }
+    }
+  ],
+  "replication_method": "FULL_TABLE",
+  "schema": {
+    "properties": {
+      "aggregation_keys": {
+        "anyOf": [
+          {
+            "additionalProperties": false,
+            "description": "Keys used as the aggregation keys a 'delivery' type issue",
+            "properties": {
+              "error_code": {
+                "items": {
+                  "description": "Error code of the delivery attempt",
+                  "type": "string"
+                },
+                "type": [
+                  "array",
+                  "null"
+                ]
+              },
+              "response_status": {
+                "items": {
+                  "format": "float",
+                  "type": "number"
+                },
+                "type": [
+                  "array",
+                  "null"
+                ]
+              },
+              "webhook_id": {
+                "items": {
+                  "type": "string"
+                },
+                "type": [
+                  "array",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "webhook_id",
+              "response_status",
+              "error_code"
+            ],
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          {
+            "additionalProperties": false,
+            "description": "Keys used as the aggregation keys a 'transformation' type issue",
+            "properties": {
+              "log_level": {
+                "items": {
+                  "description": "The minimum log level to open the issue on",
+                  "type": "string"
+                },
+                "type": [
+                  "array",
+                  "null"
+                ]
+              },
+              "transformation_id": {
+                "items": {
+                  "type": "string"
+                },
+                "type": [
+                  "array",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "transformation_id",
+              "log_level"
+            ],
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          {
+            "additionalProperties": false,
+            "description": "Keys used as the aggregation keys a 'backpressure' type issue",
+            "properties": {
+              "delay": {
+                "items": {
+                  "description": "The minimum delay (backpressure) to open the issue for min of 1 minute (60000) and max of 1 day (86400000)",
+                  "maximum": 86400000,
+                  "minimum": 60000,
+                  "type": "integer",
+                  "x-docs-type": "integer"
+                },
+                "type": [
+                  "array",
+                  "null"
+                ]
+              },
+              "destination_id": {
+                "items": {
+                  "type": "string"
+                },
+                "type": [
+                  "array",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "destination_id",
+              "delay"
+            ],
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          {
+            "additionalProperties": false,
+            "description": "Keys used as the aggregation keys a 'request' type issue",
+            "properties": {
+              "rejection_cause": {
+                "items": {
+                  "type": "string",
+                  "x-docs-type": "string"
+                },
+                "type": [
+                  "array",
+                  "null"
+                ]
+              },
+              "source_id": {
+                "items": {
+                  "type": "string"
+                },
+                "type": [
+                  "array",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "source_id",
+              "rejection_cause"
+            ],
+            "type": [
+              "object",
+              "null"
+            ]
+          }
+        ]
+      },
+      "auto_resolved_at": {
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "created_at": {
+        "description": "ISO timestamp for when the issue was created",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "data": {
+        "anyOf": [
+          {
+            "additionalProperties": false,
+            "description": "Delivery issue data",
+            "properties": {
+              "trigger_attempt": {
+                "additionalProperties": false,
+                "properties": {
+                  "attempt_number": {
+                    "description": "Sequential number of attempts (up to and including this one) made for the associated event",
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "body": {
+                    "anyOf": [
+                      {
+                        "description": "Response body from the destination",
+                        "properties": {},
+                        "type": [
+                          "object",
+                          "null"
+                        ]
+                      },
+                      {
+                        "description": "Response body from the destination",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    ]
+                  },
+                  "bulk_retry_id": {
+                    "description": "ID of associated bulk retry",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "created_at": {
+                    "description": "Date the attempt was created",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "delivered_at": {
+                    "description": "Date the attempt was delivered",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "delivery_latency": {
+                    "description": "Time elapsed between attempt initiation and final delivery (in ms)",
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "destination_id": {
+                    "description": "Destination ID",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "error_code": {
+                    "description": "Error code of the delivery attempt",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "event_id": {
+                    "description": "Event ID",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "http_method": {
+                    "description": "HTTP method used to deliver the attempt",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "id": {
+                    "description": "Attempt ID",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "requested_url": {
+                    "description": "URL of the destination where delivery was attempted",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "responded_at": {
+                    "description": "Date the destination responded to this attempt",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "response_latency": {
+                    "description": "Time elapsed between attempt initiation and a response from the destination (in ms)",
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "response_status": {
+                    "description": "Attempt's HTTP response code",
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "status": {
+                    "description": "Attempt status",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "successful_at": {
+                    "description": "Date the attempt was successful",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "team_id": {
+                    "description": "ID of the project",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "trigger": {
+                    "description": "How the attempt was triggered",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "updated_at": {
+                    "description": "Date the attempt was last updated",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "id",
+                  "team_id",
+                  "event_id",
+                  "destination_id",
+                  "status",
+                  "updated_at",
+                  "created_at"
+                ],
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "trigger_event": {
+                "additionalProperties": false,
+                "properties": {
+                  "attempts": {
+                    "description": "Number of delivery attempts made",
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "cli_id": {
+                    "description": "ID of the CLI the event is sent to",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "created_at": {
+                    "description": "Date the event was created",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "data": {
+                    "additionalProperties": false,
+                    "description": "Event data if included",
+                    "properties": {
+                      "appended_headers": {
+                        "description": "List of headers that were added by Hookdeck",
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": [
+                          "array",
+                          "null"
+                        ]
+                      },
+                      "body": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "properties": {},
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          },
+                          {
+                            "items": {},
+                            "type": "array"
+                          }
+                        ],
+                        "description": "JSON or string representation of the body"
+                      },
+                      "headers": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "additionalProperties": {
+                              "nullable": true,
+                              "type": "string"
+                            },
+                            "properties": {},
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          }
+                        ],
+                        "description": "JSON representation of the headers"
+                      },
+                      "is_large_payload": {
+                        "description": "Whether the payload is considered large payload and not searchable",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "method": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "parsed_query": {
+                        "anyOf": [
+                          {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          {
+                            "properties": {},
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          }
+                        ],
+                        "description": "JSON representation of query params"
+                      },
+                      "path": {
+                        "description": "Raw path string",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "query": {
+                        "description": "Raw query param string",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "url": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "url",
+                      "method",
+                      "path",
+                      "query",
+                      "parsed_query",
+                      "headers",
+                      "body"
+                    ],
+                    "type": [
+                      "object",
+                      "null"
+                    ]
+                  },
+                  "destination_id": {
+                    "description": "ID of the associated destination",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "error_code": {
+                    "description": "Error code of the delivery attempt",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "event_data_id": {
+                    "description": "ID of the event data",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "id": {
+                    "description": "ID of the event",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "last_attempt_at": {
+                    "description": "Date of the most recently attempted retry",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "next_attempt_at": {
+                    "description": "Date of the next scheduled retry",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "request_id": {
+                    "description": "ID of the request that created the event",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "response_status": {
+                    "description": "Event status",
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "source_id": {
+                    "description": "ID of the associated source",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "status": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "successful_at": {
+                    "description": "Date of the latest successful attempt",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "team_id": {
+                    "description": "ID of the project",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "updated_at": {
+                    "description": "Date the event was last updated",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "webhook_id": {
+                    "description": "ID of the associated connection (webhook)",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "id",
+                  "team_id",
+                  "webhook_id",
+                  "source_id",
+                  "destination_id",
+                  "event_data_id",
+                  "request_id",
+                  "attempts",
+                  "last_attempt_at",
+                  "next_attempt_at",
+                  "status",
+                  "successful_at",
+                  "cli_id",
+                  "updated_at",
+                  "created_at"
+                ],
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          {
+            "additionalProperties": false,
+            "description": "Transformation issue data",
+            "properties": {
+              "transformation_execution": {
+                "additionalProperties": false,
+                "properties": {
+                  "created_at": {
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "issue_id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "log_level": {
+                    "description": "The minimum log level to open the issue on",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "logs": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "message": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "type": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "message"
+                      ],
+                      "type": [
+                        "object",
+                        "null"
+                      ]
+                    },
+                    "type": [
+                      "array",
+                      "null"
+                    ]
+                  },
+                  "original_event_data": {
+                    "additionalProperties": false,
+                    "description": "Request data",
+                    "properties": {
+                      "body": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "properties": {},
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          },
+                          {
+                            "items": {},
+                            "type": "array"
+                          }
+                        ],
+                        "description": "JSON or string representation of the body"
+                      },
+                      "headers": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "additionalProperties": {
+                              "nullable": true,
+                              "type": "string"
+                            },
+                            "properties": {},
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          }
+                        ],
+                        "description": "JSON representation of the headers"
+                      },
+                      "is_large_payload": {
+                        "description": "Whether the payload is considered large payload and not searchable",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "parsed_query": {
+                        "anyOf": [
+                          {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          {
+                            "properties": {},
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          }
+                        ],
+                        "description": "JSON representation of query params"
+                      },
+                      "path": {
+                        "description": "Request path",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "query": {
+                        "description": "Raw query param string",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "path",
+                      "query",
+                      "parsed_query",
+                      "headers",
+                      "body"
+                    ],
+                    "type": [
+                      "object",
+                      "null"
+                    ]
+                  },
+                  "original_event_data_id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "team_id": {
+                    "description": "ID of the project",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "transformation_id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "transformed_event_data": {
+                    "additionalProperties": false,
+                    "description": "Request data",
+                    "properties": {
+                      "body": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "properties": {},
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          },
+                          {
+                            "items": {},
+                            "type": "array"
+                          }
+                        ],
+                        "description": "JSON or string representation of the body"
+                      },
+                      "headers": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "additionalProperties": {
+                              "nullable": true,
+                              "type": "string"
+                            },
+                            "properties": {},
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          }
+                        ],
+                        "description": "JSON representation of the headers"
+                      },
+                      "is_large_payload": {
+                        "description": "Whether the payload is considered large payload and not searchable",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "parsed_query": {
+                        "anyOf": [
+                          {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          {
+                            "properties": {},
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          }
+                        ],
+                        "description": "JSON representation of query params"
+                      },
+                      "path": {
+                        "description": "Request path",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "query": {
+                        "description": "Raw query param string",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "path",
+                      "query",
+                      "parsed_query",
+                      "headers",
+                      "body"
+                    ],
+                    "type": [
+                      "object",
+                      "null"
+                    ]
+                  },
+                  "transformed_event_data_id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "updated_at": {
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "webhook_id": {
+                    "description": "ID of the associated connection (webhook)",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "id",
+                  "original_event_data_id",
+                  "transformation_id",
+                  "team_id",
+                  "webhook_id",
+                  "log_level",
+                  "logs",
+                  "updated_at",
+                  "created_at"
+                ],
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "trigger_attempt": {
+                "additionalProperties": false,
+                "properties": {
+                  "attempt_number": {
+                    "description": "Sequential number of attempts (up to and including this one) made for the associated event",
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "body": {
+                    "anyOf": [
+                      {
+                        "description": "Response body from the destination",
+                        "properties": {},
+                        "type": [
+                          "object",
+                          "null"
+                        ]
+                      },
+                      {
+                        "description": "Response body from the destination",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    ]
+                  },
+                  "bulk_retry_id": {
+                    "description": "ID of associated bulk retry",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "created_at": {
+                    "description": "Date the attempt was created",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "delivered_at": {
+                    "description": "Date the attempt was delivered",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "delivery_latency": {
+                    "description": "Time elapsed between attempt initiation and final delivery (in ms)",
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "destination_id": {
+                    "description": "Destination ID",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "error_code": {
+                    "description": "Error code of the delivery attempt",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "event_id": {
+                    "description": "Event ID",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "http_method": {
+                    "description": "HTTP method used to deliver the attempt",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "id": {
+                    "description": "Attempt ID",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "requested_url": {
+                    "description": "URL of the destination where delivery was attempted",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "responded_at": {
+                    "description": "Date the destination responded to this attempt",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "response_latency": {
+                    "description": "Time elapsed between attempt initiation and a response from the destination (in ms)",
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "response_status": {
+                    "description": "Attempt's HTTP response code",
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "status": {
+                    "description": "Attempt status",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "successful_at": {
+                    "description": "Date the attempt was successful",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "team_id": {
+                    "description": "ID of the project",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "trigger": {
+                    "description": "How the attempt was triggered",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "updated_at": {
+                    "description": "Date the attempt was last updated",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "id",
+                  "team_id",
+                  "event_id",
+                  "destination_id",
+                  "status",
+                  "updated_at",
+                  "created_at"
+                ],
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "transformation_execution"
+            ],
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          {
+            "additionalProperties": false,
+            "description": "Backpressure issue data",
+            "properties": {
+              "destination": {
+                "additionalProperties": false,
+                "description": "Associated [Destination](#destination-object) object",
+                "properties": {
+                  "config": {
+                    "additionalProperties": false,
+                    "default": {},
+                    "description": "Configuration object for the destination type",
+                    "oneOf": [
+                      {
+                        "additionalProperties": false,
+                        "description": "The type config for HTTP. Requires type to be `HTTP`.",
+                        "properties": {
+                          "auth": {
+                            "additionalProperties": false,
+                            "oneOf": [
+                              {
+                                "additionalProperties": false,
+                                "properties": {},
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "HOOKDECK_SIGNATURE"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "signing_secret": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "CUSTOM_SIGNATURE"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "password": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "username": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "BASIC_AUTH"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "api_key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "to": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "API_KEY"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "token": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "BEARER_TOKEN"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "auth_server": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "authentication_type": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "client_id": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "client_secret": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "scope": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "OAUTH2_CLIENT_CREDENTIALS"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "auth_server": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "client_id": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "client_secret": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "refresh_token": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "scope": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "OAUTH2_AUTHORIZATION_CODE"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "access_key_id": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "region": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "secret_access_key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "service": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "AWS_SIGNATURE"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "scope": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "service_account_key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "GCP_SERVICE_ACCOUNT"
+                              },
+                              {
+                                "x-docs-hide": true,
+                                "x-docs-nullable": true
+                              }
+                            ],
+                            "properties": {},
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          },
+                          "auth_type": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "http_method": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "path_forwarding_disabled": {
+                            "type": [
+                              "boolean",
+                              "null"
+                            ]
+                          },
+                          "rate_limit": {
+                            "format": "float",
+                            "type": [
+                              "number",
+                              "null"
+                            ]
+                          },
+                          "rate_limit_period": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "url": {
+                            "format": "URL",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "url"
+                        ],
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "x-docs-type": "HTTP"
+                      },
+                      {
+                        "additionalProperties": false,
+                        "description": "The type config for CLI. Requires type to be `CLI`.",
+                        "properties": {
+                          "auth": {
+                            "additionalProperties": false,
+                            "oneOf": [
+                              {
+                                "additionalProperties": false,
+                                "properties": {},
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "HOOKDECK_SIGNATURE"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "signing_secret": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "CUSTOM_SIGNATURE"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "password": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "username": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "BASIC_AUTH"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "api_key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "to": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "API_KEY"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "token": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "BEARER_TOKEN"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "auth_server": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "authentication_type": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "client_id": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "client_secret": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "scope": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "OAUTH2_CLIENT_CREDENTIALS"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "auth_server": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "client_id": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "client_secret": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "refresh_token": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "scope": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "OAUTH2_AUTHORIZATION_CODE"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "access_key_id": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "region": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "secret_access_key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "service": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "AWS_SIGNATURE"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "scope": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "service_account_key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "GCP_SERVICE_ACCOUNT"
+                              },
+                              {
+                                "x-docs-hide": true,
+                                "x-docs-nullable": true
+                              }
+                            ],
+                            "properties": {},
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          },
+                          "auth_type": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "http_method": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "path": {
+                            "description": "Path for the CLI destination",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "path_forwarding_disabled": {
+                            "type": [
+                              "boolean",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "path"
+                        ],
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "x-docs-type": "CLI"
+                      },
+                      {
+                        "additionalProperties": false,
+                        "description": "The type config for MOCK_API. Requires type to be `MOCK_API`.",
+                        "properties": {
+                          "auth": {
+                            "additionalProperties": false,
+                            "oneOf": [
+                              {
+                                "additionalProperties": false,
+                                "properties": {},
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "HOOKDECK_SIGNATURE"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "signing_secret": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "CUSTOM_SIGNATURE"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "password": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "username": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "BASIC_AUTH"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "api_key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "to": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "API_KEY"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "token": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "BEARER_TOKEN"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "auth_server": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "authentication_type": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "client_id": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "client_secret": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "scope": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "OAUTH2_CLIENT_CREDENTIALS"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "auth_server": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "client_id": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "client_secret": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "refresh_token": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "scope": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "OAUTH2_AUTHORIZATION_CODE"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "access_key_id": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "region": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "secret_access_key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "service": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "AWS_SIGNATURE"
+                              },
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "scope": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "service_account_key": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                },
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "x-docs-type": "GCP_SERVICE_ACCOUNT"
+                              },
+                              {
+                                "x-docs-hide": true,
+                                "x-docs-nullable": true
+                              }
+                            ],
+                            "properties": {},
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          },
+                          "auth_type": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "http_method": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "path_forwarding_disabled": {
+                            "type": [
+                              "boolean",
+                              "null"
+                            ]
+                          },
+                          "rate_limit": {
+                            "format": "float",
+                            "type": [
+                              "number",
+                              "null"
+                            ]
+                          },
+                          "rate_limit_period": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "x-docs-type": "MOCK_API"
+                      }
+                    ],
+                    "properties": {},
+                    "type": [
+                      "object",
+                      "null"
+                    ]
+                  },
+                  "created_at": {
+                    "description": "Date the destination was created",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "description": {
+                    "description": "Description of the destination",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "disabled_at": {
+                    "description": "Date the destination was disabled",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "id": {
+                    "description": "ID of the destination",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "name": {
+                    "description": "A unique, human-friendly name for the destination",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "team_id": {
+                    "description": "ID of the project",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "type": {
+                    "description": "Type of the destination",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "updated_at": {
+                    "description": "Date the destination was last updated",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "team_id",
+                  "type",
+                  "disabled_at",
+                  "updated_at",
+                  "created_at"
+                ],
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          {
+            "additionalProperties": false,
+            "description": "Request issue data",
+            "properties": {
+              "request": {
+                "additionalProperties": false,
+                "properties": {
+                  "cli_events_count": {
+                    "description": "The count of CLI events created from this request",
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "created_at": {
+                    "description": "\tDate the event was created",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "data": {
+                    "additionalProperties": false,
+                    "description": "Request data",
+                    "properties": {
+                      "body": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "properties": {},
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          },
+                          {
+                            "items": {},
+                            "type": "array"
+                          }
+                        ],
+                        "description": "JSON or string representation of the body"
+                      },
+                      "headers": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "additionalProperties": {
+                              "nullable": true,
+                              "type": "string"
+                            },
+                            "properties": {},
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          }
+                        ],
+                        "description": "JSON representation of the headers"
+                      },
+                      "is_large_payload": {
+                        "description": "Whether the payload is considered large payload and not searchable",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "parsed_query": {
+                        "anyOf": [
+                          {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          {
+                            "properties": {},
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          }
+                        ],
+                        "description": "JSON representation of query params"
+                      },
+                      "path": {
+                        "description": "Request path",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "query": {
+                        "description": "Raw query param string",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "path",
+                      "query",
+                      "parsed_query",
+                      "headers",
+                      "body"
+                    ],
+                    "type": [
+                      "object",
+                      "null"
+                    ]
+                  },
+                  "events_count": {
+                    "description": "The count of events created from this request (CLI events not included)",
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "id": {
+                    "description": "ID of the request",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "ignored_count": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "x-docs-hide": true
+                  },
+                  "ingested_at": {
+                    "description": "The time the request was originally received",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "original_event_data_id": {
+                    "description": "ID of the request data",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "rejection_cause": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "x-docs-type": "string"
+                  },
+                  "source_id": {
+                    "description": "ID of the associated source",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "team_id": {
+                    "description": "ID of the project",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "updated_at": {
+                    "description": "Date the event was last updated",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "verified": {
+                    "description": "Whether or not the request was verified when received",
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "id",
+                  "team_id",
+                  "verified",
+                  "original_event_data_id",
+                  "rejection_cause",
+                  "ingested_at",
+                  "source_id",
+                  "events_count",
+                  "cli_events_count",
+                  "ignored_count",
+                  "updated_at",
+                  "created_at"
+                ],
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          }
+        ]
+      },
+      "dismissed_at": {
+        "description": "ISO timestamp for when the issue was dismissed",
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "first_seen_at": {
+        "description": "ISO timestamp for when the issue was first opened",
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "id": {
+        "description": "Issue ID",
+        "type": "string"
+      },
+      "last_seen_at": {
+        "description": "ISO timestamp for when the issue last occured",
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "last_updated_by": {
+        "description": "Deprecated, will always be set to null",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "merged_with": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "opened_at": {
+        "description": "ISO timestamp for when the issue was last opened",
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "reference": {
+        "anyOf": [
+          {
+            "additionalProperties": false,
+            "description": "Reference to the event and attempt an issue is being created for.",
+            "properties": {
+              "attempt_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "event_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "event_id",
+              "attempt_id"
+            ],
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          {
+            "additionalProperties": false,
+            "description": "Reference to the event request transformation an issue is being created for.",
+            "properties": {
+              "transformation_execution_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "trigger_event_request_transformation_id": {
+                "description": "Deprecated but still found on historical issues",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "transformation_execution_id"
+            ],
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          {
+            "additionalProperties": false,
+            "description": "Reference to the destination backpressure an issue is being created for.",
+            "properties": {
+              "destination_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "destination_id"
+            ],
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          {
+            "additionalProperties": false,
+            "description": "Reference to the request an issue is being created for.",
+            "properties": {
+              "request_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "request_id"
+            ],
+            "type": [
+              "object",
+              "null"
+            ]
+          }
+        ]
+      },
+      "status": {
+        "description": "Issue status",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "team_id": {
+        "description": "ID of the project",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "type": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "updated_at": {
+        "description": "ISO timestamp for when the issue was last updated",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "type": [
+      "object",
+      "null"
+    ]
+  },
+  "stream": "issues",
+  "tap_stream_id": "issues"
+}

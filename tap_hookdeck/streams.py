@@ -31,7 +31,30 @@ class HookdeckOpenAPI(OpenAPISchema[str]):
             schema["properties"]["config"] = CONFIG_SCHEMA
         if key == "Source":
             schema["properties"]["config"] = CONFIG_SCHEMA
+        if key == "IssueWithData":
+            return self._merge_variants(schema["anyOf"])
         return schema
+
+    @staticmethod
+    def _merge_variants(variants: list[dict[str, Any]]) -> dict[str, Any]:
+        """Merge ``anyOf`` object variants into a single object schema.
+
+        Properties that are identical across variants are kept as-is, the rest are
+        combined with ``anyOf``.
+
+        Returns:
+            A single object schema.
+        """
+        merged: dict[str, Any] = {"type": ["object", "null"], "properties": {}}
+        names = dict.fromkeys(name for v in variants for name in v["properties"])
+        for name in names:
+            options: list[dict[str, Any]] = []
+            for v in variants:
+                prop = v["properties"].get(name)
+                if prop is not None and prop not in options:
+                    options.append(prop)
+            merged["properties"][name] = options[0] if len(options) == 1 else {"anyOf": options}
+        return merged
 
 
 OPENAPI = HookdeckOpenAPI(resources.files("tap_hookdeck") / "openapi.json")
@@ -111,6 +134,10 @@ class Transformations(HookdeckStream):
     # Incremental not supported
     replication_key = None
 
+    @override
+    def get_child_context(self, record: dict[str, Any], context: Context | None) -> dict[str, Any]:
+        return {"transformation_id": record["id"]}
+
 
 class Requests(HookdeckStream):
     """Requests stream."""
@@ -122,3 +149,79 @@ class Requests(HookdeckStream):
 
     # Incremental not supported
     replication_key = "ingested_at"
+
+
+class Events(HookdeckStream):
+    """Events stream."""
+
+    name = "events"
+    path = "/events"
+    primary_keys = ("id",)
+    schema = StreamSchema(OPENAPI, key="Event")
+
+    replication_key = "created_at"
+
+    @override
+    def get_child_context(self, record: dict[str, Any], context: Context | None) -> dict[str, Any]:
+        return {"event_id": record["id"]}
+
+
+class Attempts(HookdeckStream):
+    """Event attempts stream."""
+
+    name = "attempts"
+    path = "/attempts"
+    primary_keys = ("id",)
+    schema = StreamSchema(OPENAPI, key="EventAttempt")
+    parent_stream_type = Events
+
+    # Incremental not supported
+    replication_key = None
+
+    @override
+    def get_url_params(
+        self,
+        context: Context | None,
+        next_page_token: str | None,
+    ) -> dict[str, Any]:
+        params = super().get_url_params(context, next_page_token)
+        if context:
+            params["event_id"] = context["event_id"]
+        return params
+
+
+class Bookmarks(HookdeckStream):
+    """Bookmarks stream."""
+
+    name = "bookmarks"
+    path = "/bookmarks"
+    primary_keys = ("id",)
+    schema = StreamSchema(OPENAPI, key="Bookmark")
+
+    # Incremental not supported
+    replication_key = None
+
+
+class Issues(HookdeckStream):
+    """Issues stream."""
+
+    name = "issues"
+    path = "/issues"
+    primary_keys = ("id",)
+    schema = StreamSchema(OPENAPI, key="IssueWithData")
+
+    # Incremental not supported
+    replication_key = None
+
+
+class TransformationExecutions(HookdeckStream):
+    """Transformation executions stream."""
+
+    name = "transformation_executions"
+    path = "/transformations/{transformation_id}/executions"
+    primary_keys = ("id",)
+    schema = StreamSchema(OPENAPI, key="TransformationExecution")
+    parent_stream_type = Transformations
+
+    # Incremental not supported
+    replication_key = None
