@@ -18,6 +18,11 @@ TestTapHookdeck = get_tap_test_class(
         ignore_no_records_for_streams=[
             "transformations",
             "requests",
+            "events",
+            "attempts",
+            "bookmarks",
+            "issues",
+            "transformation_executions",
         ],
     ),
 )

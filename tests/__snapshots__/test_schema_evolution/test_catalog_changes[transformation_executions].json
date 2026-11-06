@@ -1,0 +1,568 @@
+{
+  "key_properties": [
+    "id"
+  ],
+  "metadata": [
+    {
+      "breadcrumb": [
+        "properties",
+        "id"
+      ],
+      "metadata": {
+        "inclusion": "automatic"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "transformed_event_data_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "original_event_data_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "transformation_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "team_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "webhook_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "log_level"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "logs"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "updated_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "created_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "original_event_data"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "original_event_data",
+        "properties",
+        "path"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "original_event_data",
+        "properties",
+        "query"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "original_event_data",
+        "properties",
+        "parsed_query"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "original_event_data",
+        "properties",
+        "headers"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "original_event_data",
+        "properties",
+        "body"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "original_event_data",
+        "properties",
+        "is_large_payload"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "transformed_event_data"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "transformed_event_data",
+        "properties",
+        "path"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "transformed_event_data",
+        "properties",
+        "query"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "transformed_event_data",
+        "properties",
+        "parsed_query"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "transformed_event_data",
+        "properties",
+        "headers"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "transformed_event_data",
+        "properties",
+        "body"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "transformed_event_data",
+        "properties",
+        "is_large_payload"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "issue_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [],
+      "metadata": {
+        "inclusion": "available",
+        "selected": true,
+        "selected-by-default": true,
+        "table-key-properties": [
+          "id"
+        ]
+      }
+    }
+  ],
+  "replication_method": "FULL_TABLE",
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "created_at": {
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "id": {
+        "type": "string"
+      },
+      "issue_id": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "log_level": {
+        "description": "The minimum log level to open the issue on",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "logs": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "message": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "type": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "type",
+            "message"
+          ],
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      },
+      "original_event_data": {
+        "additionalProperties": false,
+        "description": "Request data",
+        "properties": {
+          "body": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "properties": {},
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              {
+                "items": {},
+                "type": "array"
+              }
+            ],
+            "description": "JSON or string representation of the body"
+          },
+          "headers": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "nullable": true,
+                  "type": "string"
+                },
+                "properties": {},
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            ],
+            "description": "JSON representation of the headers"
+          },
+          "is_large_payload": {
+            "description": "Whether the payload is considered large payload and not searchable",
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "parsed_query": {
+            "anyOf": [
+              {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              {
+                "properties": {},
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            ],
+            "description": "JSON representation of query params"
+          },
+          "path": {
+            "description": "Request path",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "query": {
+            "description": "Raw query param string",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "query",
+          "parsed_query",
+          "headers",
+          "body"
+        ],
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "original_event_data_id": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "team_id": {
+        "description": "ID of the project",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "transformation_id": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "transformed_event_data": {
+        "additionalProperties": false,
+        "description": "Request data",
+        "properties": {
+          "body": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "properties": {},
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              {
+                "items": {},
+                "type": "array"
+              }
+            ],
+            "description": "JSON or string representation of the body"
+          },
+          "headers": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "nullable": true,
+                  "type": "string"
+                },
+                "properties": {},
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            ],
+            "description": "JSON representation of the headers"
+          },
+          "is_large_payload": {
+            "description": "Whether the payload is considered large payload and not searchable",
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "parsed_query": {
+            "anyOf": [
+              {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              {
+                "properties": {},
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            ],
+            "description": "JSON representation of query params"
+          },
+          "path": {
+            "description": "Request path",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "query": {
+            "description": "Raw query param string",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "query",
+          "parsed_query",
+          "headers",
+          "body"
+        ],
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "transformed_event_data_id": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "updated_at": {
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "webhook_id": {
+        "description": "ID of the associated connection (webhook)",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "id",
+      "original_event_data_id",
+      "transformation_id",
+      "team_id",
+      "webhook_id",
+      "log_level",
+      "logs",
+      "updated_at",
+      "created_at"
+    ],
+    "type": "object"
+  },
+  "stream": "transformation_executions",
+  "tap_stream_id": "transformation_executions"
+}

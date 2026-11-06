@@ -1,0 +1,548 @@
+{
+  "key_properties": [
+    "id"
+  ],
+  "metadata": [
+    {
+      "breadcrumb": [
+        "properties",
+        "id"
+      ],
+      "metadata": {
+        "inclusion": "automatic"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "team_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "webhook_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "source_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "destination_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "event_data_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "request_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "attempts"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "last_attempt_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "next_attempt_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "response_status"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "error_code"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "status"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "successful_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "cli_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "updated_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "created_at"
+      ],
+      "metadata": {
+        "inclusion": "automatic"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data",
+        "properties",
+        "url"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data",
+        "properties",
+        "method"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data",
+        "properties",
+        "path"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data",
+        "properties",
+        "query"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data",
+        "properties",
+        "parsed_query"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data",
+        "properties",
+        "headers"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data",
+        "properties",
+        "appended_headers"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data",
+        "properties",
+        "body"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "data",
+        "properties",
+        "is_large_payload"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [],
+      "metadata": {
+        "inclusion": "available",
+        "replication-key": "created_at",
+        "selected": true,
+        "selected-by-default": true,
+        "table-key-properties": [
+          "id"
+        ],
+        "valid-replication-keys": [
+          "created_at"
+        ]
+      }
+    }
+  ],
+  "replication_key": "created_at",
+  "replication_method": "INCREMENTAL",
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "attempts": {
+        "description": "Number of delivery attempts made",
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "cli_id": {
+        "description": "ID of the CLI the event is sent to",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "created_at": {
+        "description": "Date the event was created",
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "data": {
+        "additionalProperties": false,
+        "description": "Event data if included",
+        "properties": {
+          "appended_headers": {
+            "description": "List of headers that were added by Hookdeck",
+            "items": {
+              "type": "string"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "body": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "properties": {},
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              {
+                "items": {},
+                "type": "array"
+              }
+            ],
+            "description": "JSON or string representation of the body"
+          },
+          "headers": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "additionalProperties": {
+                  "nullable": true,
+                  "type": "string"
+                },
+                "properties": {},
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            ],
+            "description": "JSON representation of the headers"
+          },
+          "is_large_payload": {
+            "description": "Whether the payload is considered large payload and not searchable",
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "method": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "parsed_query": {
+            "anyOf": [
+              {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              {
+                "properties": {},
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            ],
+            "description": "JSON representation of query params"
+          },
+          "path": {
+            "description": "Raw path string",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "query": {
+            "description": "Raw query param string",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "url",
+          "method",
+          "path",
+          "query",
+          "parsed_query",
+          "headers",
+          "body"
+        ],
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "destination_id": {
+        "description": "ID of the associated destination",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "error_code": {
+        "description": "Error code of the delivery attempt",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "event_data_id": {
+        "description": "ID of the event data",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "id": {
+        "description": "ID of the event",
+        "type": "string"
+      },
+      "last_attempt_at": {
+        "description": "Date of the most recently attempted retry",
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "next_attempt_at": {
+        "description": "Date of the next scheduled retry",
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "request_id": {
+        "description": "ID of the request that created the event",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "response_status": {
+        "description": "Event status",
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "source_id": {
+        "description": "ID of the associated source",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "status": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "successful_at": {
+        "description": "Date of the latest successful attempt",
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "team_id": {
+        "description": "ID of the project",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "updated_at": {
+        "description": "Date the event was last updated",
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "webhook_id": {
+        "description": "ID of the associated connection (webhook)",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "id",
+      "team_id",
+      "webhook_id",
+      "source_id",
+      "destination_id",
+      "event_data_id",
+      "request_id",
+      "attempts",
+      "last_attempt_at",
+      "next_attempt_at",
+      "status",
+      "successful_at",
+      "cli_id",
+      "updated_at",
+      "created_at"
+    ],
+    "type": "object"
+  },
+  "stream": "events",
+  "tap_stream_id": "events"
+}

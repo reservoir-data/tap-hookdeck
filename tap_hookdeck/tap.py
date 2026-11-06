@@ -37,15 +37,10 @@ class TapHookdeck(Tap):
             streams.Sources(tap=self),
             streams.IssueTriggers(tap=self),
             streams.Transformations(tap=self),
-            # TODO(edgarrmondragon): transformation execution logs
-            # https://github.com/reservoir-data/tap-hookdeck/issues/1
+            streams.TransformationExecutions(tap=self),
             streams.Requests(tap=self),
-            # TODO(edgarrmondragon): events
-            # https://github.com/reservoir-data/tap-hookdeck/issues/3
-            # TODO(edgarrmondragon): attempts
-            # https://github.com/reservoir-data/tap-hookdeck/issues/4
-            # TODO(edgarrmondragon): bookmarks
-            # https://github.com/reservoir-data/tap-hookdeck/issues/5
-            # TODO(edgarrmondragon): issues
-            # https://github.com/reservoir-data/tap-hookdeck/issues/6
+            streams.Events(tap=self),
+            streams.Attempts(tap=self),
+            streams.Bookmarks(tap=self),
+            streams.Issues(tap=self),
         ]

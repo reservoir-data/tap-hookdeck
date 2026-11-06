@@ -1,0 +1,370 @@
+{
+  "key_properties": [
+    "id"
+  ],
+  "metadata": [
+    {
+      "breadcrumb": [
+        "properties",
+        "id"
+      ],
+      "metadata": {
+        "inclusion": "automatic"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "team_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "event_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "destination_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "response_status"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "attempt_number"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "trigger"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "error_code"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "body"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "requested_url"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "http_method"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "bulk_retry_id"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "status"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "successful_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "delivered_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "responded_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "delivery_latency"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "response_latency"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "updated_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [
+        "properties",
+        "created_at"
+      ],
+      "metadata": {
+        "inclusion": "available"
+      }
+    },
+    {
+      "breadcrumb": [],
+      "metadata": {
+        "inclusion": "available",
+        "selected": true,
+        "selected-by-default": true,
+        "table-key-properties": [
+          "id"
+        ]
+      }
+    }
+  ],
+  "replication_method": "FULL_TABLE",
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "attempt_number": {
+        "description": "Sequential number of attempts (up to and including this one) made for the associated event",
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "body": {
+        "anyOf": [
+          {
+            "description": "Response body from the destination",
+            "properties": {},
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          {
+            "description": "Response body from the destination",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        ]
+      },
+      "bulk_retry_id": {
+        "description": "ID of associated bulk retry",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "created_at": {
+        "description": "Date the attempt was created",
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "delivered_at": {
+        "description": "Date the attempt was delivered",
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "delivery_latency": {
+        "description": "Time elapsed between attempt initiation and final delivery (in ms)",
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "destination_id": {
+        "description": "Destination ID",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "error_code": {
+        "description": "Error code of the delivery attempt",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "event_id": {
+        "description": "Event ID",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "http_method": {
+        "description": "HTTP method used to deliver the attempt",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "id": {
+        "description": "Attempt ID",
+        "type": "string"
+      },
+      "requested_url": {
+        "description": "URL of the destination where delivery was attempted",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "responded_at": {
+        "description": "Date the destination responded to this attempt",
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "response_latency": {
+        "description": "Time elapsed between attempt initiation and a response from the destination (in ms)",
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "response_status": {
+        "description": "Attempt's HTTP response code",
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "status": {
+        "description": "Attempt status",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "successful_at": {
+        "description": "Date the attempt was successful",
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "team_id": {
+        "description": "ID of the project",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "trigger": {
+        "description": "How the attempt was triggered",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "updated_at": {
+        "description": "Date the attempt was last updated",
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "id",
+      "team_id",
+      "event_id",
+      "destination_id",
+      "status",
+      "updated_at",
+      "created_at"
+    ],
+    "type": "object"
+  },
+  "stream": "attempts",
+  "tap_stream_id": "attempts"
+}
